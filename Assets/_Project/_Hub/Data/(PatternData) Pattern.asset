@@ -22,5 +22,6 @@ MonoBehaviour:
   <PatternUsage>k__BackingField: The character's movement was abstracted to a Walk
     Command that contains an ordered list of cells that form a path and a target
     Character. By saving the Commands in a List, we can make the character undo and
-    redo the exact same steps, simply by switching Commands and reversing the path.
+    redo the exact same steps simply by switching Commands and reversing the path
+    when necessary.
   <SceneName>k__BackingField: Command Pattern
