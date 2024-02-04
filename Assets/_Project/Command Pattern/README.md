@@ -57,34 +57,40 @@ public class GridMovement : MonoBehaviour{
 Now we're able to provide the undo/redo behaviour simply by swithing the current command and calling Execute/Undo:
 
 ~~~c#
-public void RedoWalkCommand(){
-    _currentCommandIndex++;
-    _commands[_currentCommandIndex].Execute();
-}
-
-public void UndoWalkCommand(){
-    _commands[_currentCommandIndex].Undo();
-    _currentCommandIndex--;
+public class GridMovement : MonoBehaviour{
+    //...
+    public void RedoWalkCommand(){
+        _currentCommandIndex++;
+        _commands[_currentCommandIndex].Execute();
+    }
+    
+    public void UndoWalkCommand(){
+        _commands[_currentCommandIndex].Undo();
+        _currentCommandIndex--;
+    }
+    //...
 }
 ~~~
 
 Remember that whenever we perform a new command, we also have to discard everything after the current command:
 
 ~~~c#
-private void AddWalkCommand(){
-    if (_currentCommandIndex < _commands.Count - 1){ ClearRedoCommands(); }
-    WalkCommand walkCommand = new(_pathfinder.Search(), _character);
-    _commands.Add(walkCommand);
-    // ...
-}
-
-private void ClearRedoCommands(){
-    if (_currentCommandIndex < -1 || _currentCommandIndex > _commands.Count - 1){
-        return;
+public class GridMovement : MonoBehaviour{
+    // ... 
+    private void AddWalkCommand(){
+        if (_currentCommandIndex < _commands.Count - 1){ ClearRedoCommands(); }
+        WalkCommand walkCommand = new(_pathfinder.Search(), _character);
+        _commands.Add(walkCommand);
+        // ...
     }
-
-    int removeCount = _commands.Count - _currentCommandIndex - 1;
-    _commands.RemoveRange(_currentCommandIndex + 1, removeCount);
+    
+    private void ClearRedoCommands(){
+        if (_currentCommandIndex < -1 || _currentCommandIndex > _commands.Count - 1){ return; }
+    
+        int removeCount = _commands.Count - _currentCommandIndex - 1;
+        _commands.RemoveRange(_currentCommandIndex + 1, removeCount);
+    }
+    // ...
 }
 ~~~
 
