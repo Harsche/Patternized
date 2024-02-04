@@ -11,11 +11,10 @@ namespace CommandPattern{
 
         private Pathfinder _pathfinder;
         private int _currentCommandIndex;
-        private readonly List<ICommand> _walkCommands = new();
-        private ICommand _currentCommand;
+        private readonly List<ICommand> _commands = new();
 
         public bool CanUndo => _currentCommandIndex >= 0;
-        public bool CanRedo => _currentCommandIndex < _walkCommands.Count - 1;
+        public bool CanRedo => _currentCommandIndex < _commands.Count - 1;
 
         private void Awake(){
             BoundsInt tilemapCellBounds = _tilemap.cellBounds;
@@ -36,28 +35,34 @@ namespace CommandPattern{
             var startCell = (Vector2Int) _tilemap.WorldToCell(_character.transform.position);
             _pathfinder.SetGoal(startCell, (Vector2Int) cellPosition);
 
-            if (_currentCommandIndex < _walkCommands.Count - 1){ ClearRedoCommands(); }
+            AddWalkCommand();
+        }
+
+        private void AddWalkCommand(){
+            if (_currentCommandIndex < _commands.Count - 1){ ClearRedoCommands(); }
             WalkCommand walkCommand = new(_pathfinder.Search(), _character);
-            _walkCommands.Add(walkCommand);
-            _currentCommandIndex = _walkCommands.Count - 1;
+            _commands.Add(walkCommand);
+            _currentCommandIndex = _commands.Count - 1;
             walkCommand.Execute();
         }
 
         public void RedoWalkCommand(){
             _currentCommandIndex++;
-            _walkCommands[_currentCommandIndex].Execute();
+            _commands[_currentCommandIndex].Execute();
         }
 
         public void UndoWalkCommand(){
-            _walkCommands[_currentCommandIndex].Undo();
+            _commands[_currentCommandIndex].Undo();
             _currentCommandIndex--;
         }
 
         private void ClearRedoCommands(){
-            if (_currentCommandIndex < -1 || _currentCommandIndex > _walkCommands.Count - 1){ return; }
+            if (_currentCommandIndex < -1 || _currentCommandIndex > _commands.Count - 1){
+                return;
+            }
 
-            int removeCount = _walkCommands.Count - _currentCommandIndex - 1;
-            _walkCommands.RemoveRange(_currentCommandIndex + 1, removeCount);
+            int removeCount = _commands.Count - _currentCommandIndex - 1;
+            _commands.RemoveRange(_currentCommandIndex + 1, removeCount);
         }
     }
 }
