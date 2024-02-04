@@ -6,4 +6,8 @@ public class GeneralMethods : ScriptableObject{
     public void LoadScene(string sceneName){
         SceneManager.LoadScene(sceneName);
     }
+    
+    public void OpenUrl(string url){
+        Application.OpenURL(url);
+    }
 }

@@ -19,7 +19,7 @@ namespace CommandPattern{
         public Coroutine WalkCoroutine{ get; private set; }
         private List<Vector2Int> _currentPath;
 
-        public static event Action<bool> OnWalkStateChanged;
+        public event Action<bool> OnWalkStateChanged;
         
         public void WalkPath(Stack<Vector2Int> path){
             WalkCoroutine = StartCoroutine(WalkPathCoroutine(path));

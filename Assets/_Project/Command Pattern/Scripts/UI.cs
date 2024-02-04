@@ -7,9 +7,10 @@ namespace CommandPattern{
         [SerializeField] private Button _undoButton;
         [SerializeField] private Button _redoButton;
         [SerializeField] private GridMovement _gridMovement;
+        [SerializeField] private Character _character;
 
         private void Awake(){
-            Character.OnWalkStateChanged += isWalking => {
+            _character.OnWalkStateChanged += isWalking => {
                 if (isWalking){
                     _undoButton.interactable = false;
                     _redoButton.interactable = false;

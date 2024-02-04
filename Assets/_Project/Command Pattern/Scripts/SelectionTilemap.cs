@@ -9,6 +9,7 @@ namespace CommandPattern{
     public class SelectionTilemap : MonoBehaviour{
         [SerializeField] private Camera _camera;
         [SerializeField] private Tilemap _selectionTilemap;
+        [SerializeField] private Character _character;
         [SerializeField, Range(0, 1)] private float _showTime = 1f;
 
         private List<SelectionTile> _tiles = new();
@@ -26,7 +27,7 @@ namespace CommandPattern{
                 }
             }
 
-            Character.OnWalkStateChanged += isWalking => {
+            _character.OnWalkStateChanged += isWalking => {
                 float targetAlpha = isWalking ? 0 : 1;
                 StartCoroutine(FadeCoroutine(targetAlpha, 0.2f));
             };

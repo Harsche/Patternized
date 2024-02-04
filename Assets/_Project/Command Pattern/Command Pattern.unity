@@ -2030,6 +2030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 1709465563}
   _selectionTilemap: {fileID: 1245226730}
+  _character: {fileID: 121149979}
   _showTime: 0.3
 --- !u!1 &1404261830
 GameObject:
@@ -3251,6 +3252,7 @@ MonoBehaviour:
   _undoButton: {fileID: 302504388}
   _redoButton: {fileID: 151064679}
   _gridMovement: {fileID: 1404261833}
+  _character: {fileID: 121149979}
 --- !u!1 &1709465561
 GameObject:
   m_ObjectHideFlags: 0
