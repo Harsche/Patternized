@@ -14,13 +14,13 @@ Unity cube is 1.3kB (around 1330 bytes). This means that, unless your object cla
 from it.
 
 At first, I thought of skipping this pattern because it didn't seem so useful in Unity, but after some thinking, I came
-uo up with an idea that might be a good example of the pattern. Using Unity ECS (Entity Component System), we're going
-to create thousands of objects that share common data, and save a few MB of RAM in the process.
+up with an idea that might be a good example of the pattern. Using Unity ECS (Entity Component System), we're going
+to create thousands of objects that share common data, and save a few megabytes of RAM in the process.
 
 ## Explanation
 
-Have you ever noticed that, even if you have 2 copies of a Game Object, the 2 will have different instances of identical
-objects? For instance 2 cubes with the standard material have identical Mesh Filter components and identical Mesh
+Have you ever noticed that, even if you have 2 copies of a GameObject, the 2 will have different instances of identical
+Components? For instance, 2 cubes with the standard material have identical Mesh Filter components and identical Mesh
 Renderer components. That is most certainly duplicated data.
 
 <p style="text-align: center;"> 2 different cubes, 3 identical components: </p>
@@ -28,13 +28,13 @@ Renderer components. That is most certainly duplicated data.
 ![Cubes.png](..%2FCommand%20Pattern%2FImages%2FCubes.png)
 
 Don't get me wrong, this is not a bad thing. This allows us to change a mesh for one object without messing with the
-other. But the flyweight pattern is all about reusing objects, so if we have 2 identical cubes that won't change, we
-need to share whatever we can between them, event components. And we'll do just that with ECS.
+other. The thing is that the flyweight pattern is all about reusing objects, so if we have 2 identical cubes that won't change,
+we need to share whatever we can between them, even Components. And we'll do just that with ECS.
 
 ## Implementation
 
 I won't be explaining every detail about how ECS works because we're focusing on the pattern implementation. What you
-need to know, in case you already don't is that ECS allows us to create shared components and add them to Entities (the
+need to know, in case you don't, is that ECS allows us to create shared components and add them to Entities (the
 ECS correspondent of GameObjects).
 
 In this example, we'll create 9 types of pickup coins and use them to create 100,000 entities.
