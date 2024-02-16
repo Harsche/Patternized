@@ -37,4 +37,4 @@ Here's the current stage of development for each pattern:
 * Spatial Partition
 
 ## Credits
-Assets provided by [Kenney](https://www.kenney.nl/)
+Assets provided by [Kenney](https://www.kenney.nl/) and [Quaternius](https://quaternius.com/index.html)
