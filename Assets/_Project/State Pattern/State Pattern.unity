@@ -190,6 +190,7 @@ Transform:
   m_Children:
   - {fileID: 9879407}
   - {fileID: 786594821}
+  - {fileID: 1290683420}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &756580663
@@ -253,7 +254,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -691390603, guid: 93298f63ea70df5489113a2fae7dea9a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -280,8 +281,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 1.5
+  m_Material: {fileID: 6200000, guid: 448ac0801b96f284a886b148638574db, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -351,12 +352,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentState: 0
   <Speed>k__BackingField: 5
-  <JumpHeight>k__BackingField: 8
+  <JumpHeight>k__BackingField: 10
   <ShotCooldown>k__BackingField: 0.15
   <MorphBallAcceleration>k__BackingField: 6.5
   <ExitMorphColliderCheck>k__BackingField: {fileID: 786594822}
   <ProjectilePrefab>k__BackingField: {fileID: 1775099052191618985, guid: f1032dabab041894ba1b804f20bb2e85, type: 3}
   <ProjectileSpawn>k__BackingField: {fileID: 9879407}
+  <WallGrabRaycast>k__BackingField: {fileID: 1290683420}
+  <WallGrabRaycastDistance>k__BackingField: 0.425
   <GroundContactFilter>k__BackingField:
     useTriggers: 0
     useLayerMask: 1
@@ -448,6 +451,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7943805, y: 2.2536705}
   m_EdgeRadius: 0
+--- !u!1 &1290683419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1290683420}
+  m_Layer: 0
+  m_Name: Wall Grab Raycast
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1290683420
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1290683419}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.26, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 756580662}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1545837382
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,11 @@ namespace StatePattern{
         }
 
         public void Update(Player player){
+            if (!player.CheckGround()){
+                player.StartCoroutine(FallExitThreshold(player));
+                return;
+            }
+
             if (Input.GetKeyDown(KeyCode.Space)){
                 player.ChangeState(PlayerState.Jumping);
                 return;
@@ -36,6 +41,14 @@ namespace StatePattern{
 
         public IEnumerator Exit(Player player){
             yield break;
+        }
+
+        private IEnumerator FallExitThreshold(Player player){
+            for (float f = 0; f < 0.1f; f += Time.deltaTime){
+                if (player.CheckGround()){ yield break; }
+                yield return null;
+            }
+            player.ChangeState(PlayerState.Falling);
         }
     }
 }

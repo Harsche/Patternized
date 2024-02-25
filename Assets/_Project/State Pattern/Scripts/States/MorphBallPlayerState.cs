@@ -8,8 +8,10 @@ namespace StatePattern{
         public IEnumerator Enter(Player player){
             DirectionOnExitMorphing = player.transform.localScale.x;
             player.Animator.SetFloat(Player.AimingBlendAnimationParameter, 0f);
+            player.Rigidbody.gravityScale = 0;
             yield return player.PlayAnimation("To_Morph_Ball");
             yield return player.WaitUntilCurrentAnimationFinishes();
+            player.Rigidbody.gravityScale = player.InitialGravityScale;
             player.Animator.Play("Morph_Ball_Roll");
         }
 
@@ -41,8 +43,10 @@ namespace StatePattern{
         }
 
         public IEnumerator Exit(Player player){
+            player.Rigidbody.gravityScale = 0;
             player.Animator.Play("From_Morph_Ball", 0, 0);
             yield return player.WaitUntilCurrentAnimationFinishes();
+            player.Rigidbody.gravityScale = player.InitialGravityScale;
         }
 
         private bool CanExitMorph(Player player){

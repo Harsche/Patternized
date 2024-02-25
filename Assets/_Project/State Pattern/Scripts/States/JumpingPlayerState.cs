@@ -28,6 +28,11 @@ namespace StatePattern{
                 player.ChangeState(targetState);
                 return;
             }
+            
+            if (player.CheckWallGrab()){
+                player.ChangeState(PlayerState.WallGrab);
+                return;
+            }
 
             if (velocity.y <= 0){
                 player.ChangeState(PlayerState.Falling);

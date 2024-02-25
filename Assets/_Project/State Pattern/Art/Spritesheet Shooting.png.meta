@@ -375,7 +375,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_12
+      name: Wall_Grab_Aim_Down
       rect:
         serializedVersion: 2
         x: 576
@@ -774,7 +774,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_31
+      name: Wall_Grab_Shoot_Down
       rect:
         serializedVersion: 2
         x: 576
@@ -7762,7 +7762,6 @@ TextureImporter:
       Spritesheet Shooting_117: 1316323194
       Spritesheet Shooting_118: 1112706057
       Spritesheet Shooting_119: -87491207
-      Spritesheet Shooting_12: 931242126
       Spritesheet Shooting_120: -1409648003
       Spritesheet Shooting_121: -1591237263
       Spritesheet Shooting_122: -630406738
@@ -7949,7 +7948,6 @@ TextureImporter:
       Spritesheet Shooting_307: -760083309
       Spritesheet Shooting_308: 380980337
       Spritesheet Shooting_309: -2056558882
-      Spritesheet Shooting_31: 1309942859
       Spritesheet Shooting_310: -1098296329
       Spritesheet Shooting_311: 1796617519
       Spritesheet Shooting_312: -113313319
@@ -8075,6 +8073,8 @@ TextureImporter:
       Spritesheet Shooting_97: 776510280
       Spritesheet Shooting_98: 966165213
       Spritesheet Shooting_99: 759774399
+      Wall_Grab_Aim_Down: 931242126
+      Wall_Grab_Shoot_Down: 1309942859
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
