@@ -17,8 +17,8 @@ You can play a web version of the "game" [here](https://luizharsche.itch.io/patt
 Here's the current stage of development for each pattern:
 
 * [Command](https://github.com/Harsche/Patternized/tree/master/Assets/_Project/Command%20Pattern) ✅
-* Flyweight ⏳
-* Observer
+* [Flyweight](https://github.com/Harsche/Patternized/tree/master/Assets/_Project/Flyweight%20Pattern) ✅
+* Observer⏳
 * Prototype
 * Singleton
 * State
@@ -37,4 +37,4 @@ Here's the current stage of development for each pattern:
 * Spatial Partition
 
 ## Credits
-Assets provided by [Kenney](https://www.kenney.nl/)
+Assets provided by [Kenney](https://www.kenney.nl/) and [Quaternius](https://quaternius.com/index.html)
