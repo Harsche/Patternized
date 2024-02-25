@@ -144,27 +144,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 864
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 11a93970146da5a498ec0da375527c02
-      internalID: -129581194
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_2
       rect:
         serializedVersion: 2
@@ -480,48 +459,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_17
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 864
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24b3eab0e3d6db648945898a90b728b1
-      internalID: -765772011
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_18
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 864
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9d737fc71deb47147abbfd0e50454af2
-      internalID: -725709822
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_19
       rect:
         serializedVersion: 2
@@ -538,27 +475,6 @@ TextureImporter:
       bones: []
       spriteID: d4a20f26815b2bc42865712e3edd6f7a
       internalID: 21273808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_20
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 816
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d6460ca15a95b2d4aae85c2c434bf6f7
-      internalID: -1662237142
       vertices: []
       indices: 
       edges: []
@@ -879,48 +795,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_36
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 816
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a06a192ed93349429859ea5df38c525
-      internalID: -1560169549
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_37
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 816
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c1d6d1454a4b69e4abfc6302520b749a
-      internalID: -843958449
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_38
       rect:
         serializedVersion: 2
@@ -937,27 +811,6 @@ TextureImporter:
       bones: []
       spriteID: dcd891608c70cbd4ab2b81b0ce702de3
       internalID: -1227729977
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_39
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 768
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b4b8e44f631c559448462e9e7ba54606
-      internalID: -126899558
       vertices: []
       indices: 
       edges: []
@@ -1278,48 +1131,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_55
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 768
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f643d5ebf3095fa4badb9179f2fe0c50
-      internalID: 1283947956
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_56
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 768
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b0d264b4a039a9849ab302ddd64dd09b
-      internalID: 1507108901
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_57
       rect:
         serializedVersion: 2
@@ -1336,27 +1147,6 @@ TextureImporter:
       bones: []
       spriteID: 8c968cab374fb59449be62bf4a4b38da
       internalID: -2067140053
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_58
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 720
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a45072d5e0272c148a55cf126c044ebf
-      internalID: -1300797790
       vertices: []
       indices: 
       edges: []
@@ -1677,48 +1467,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_74
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 720
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 615d33328e209aa4e9515f6b02613ad3
-      internalID: 1987749952
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_75
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 720
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bcc642745fa7f1c459a64ae245b40f6e
-      internalID: 786774511
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_76
       rect:
         serializedVersion: 2
@@ -1735,27 +1483,6 @@ TextureImporter:
       bones: []
       spriteID: f754e7b62b865c44a8a2b0ec95155a3c
       internalID: -116025278
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_77
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 672
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d931ea8164b9cdc4eae700c20bde77d8
-      internalID: 1988944201
       vertices: []
       indices: 
       edges: []
@@ -2076,48 +1803,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_93
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 672
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: de4e549e107f9b7468afb68a1a12ff51
-      internalID: -546363593
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_94
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 672
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 656ee3edc6c62de4f84c10ef85037269
-      internalID: -1933104231
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_95
       rect:
         serializedVersion: 2
@@ -2134,27 +1819,6 @@ TextureImporter:
       bones: []
       spriteID: 6fe87a030c6ab8d4c96d07d5bee6850b
       internalID: -196696039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_96
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 624
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9db3756b0da5ece4591c27520acffc79
-      internalID: -2095724844
       vertices: []
       indices: 
       edges: []
@@ -2475,48 +2139,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_112
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 624
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99e22f8c27bf00649bcc459880cb5097
-      internalID: 1305172034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_113
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 624
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54de23bd0ca15754e88a0b757ba6946b
-      internalID: 618260944
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_114
       rect:
         serializedVersion: 2
@@ -2533,27 +2155,6 @@ TextureImporter:
       bones: []
       spriteID: 6db77e23a7c80e0459dabdc44c9d3c2b
       internalID: -1598537335
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_115
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 576
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28f0107337f074b46b438376e82f026e
-      internalID: 95536777
       vertices: []
       indices: 
       edges: []
@@ -2874,48 +2475,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_131
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 576
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e90d2aa3bc142e34a8ed2dcf57a4c6fb
-      internalID: 285046514
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_132
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 576
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4c51477e1bd1e4e47ad22baac4825d93
-      internalID: 1053285922
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_133
       rect:
         serializedVersion: 2
@@ -2932,27 +2491,6 @@ TextureImporter:
       bones: []
       spriteID: 52c6c683579b9324287e89370f298120
       internalID: -968627906
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_134
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 528
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f70eafc749b2c54cb06843f21fc29c3
-      internalID: -1511764600
       vertices: []
       indices: 
       edges: []
@@ -3273,48 +2811,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_150
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 528
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a08eaa9c860db04399553010958c7b0
-      internalID: -373894232
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_151
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 528
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f1d72d3af534d894f940f214b51b8e05
-      internalID: -1707421764
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Idle_Aim_Forward
       rect:
         serializedVersion: 2
@@ -3588,7 +3084,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_165
+      name: Fall_Aim_Forward_01
       rect:
         serializedVersion: 2
         x: 624
@@ -3609,7 +3105,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_166
+      name: Fall_Aim_Forward_02
       rect:
         serializedVersion: 2
         x: 672
@@ -3630,7 +3126,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_167
+      name: Fall_Aim_Forward_03
       rect:
         serializedVersion: 2
         x: 720
@@ -3651,7 +3147,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_168
+      name: Fall_Aim_Forward_04
       rect:
         serializedVersion: 2
         x: 768
@@ -3667,48 +3163,6 @@ TextureImporter:
       bones: []
       spriteID: e9a83ffad3af56342a876c7824d4adfc
       internalID: -1260359685
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_169
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 480
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f6c438f7ef61b8947961907bde298e4e
-      internalID: -1769694277
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_170
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 480
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7d4453452bb4c074c9f0e6d7de4ae084
-      internalID: 1359149864
       vertices: []
       indices: 
       edges: []
@@ -3987,7 +3441,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_184
+      name: Fall_Shoot_Forward_01
       rect:
         serializedVersion: 2
         x: 624
@@ -4008,7 +3462,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_185
+      name: Fall_Shoot_Forward_02
       rect:
         serializedVersion: 2
         x: 672
@@ -4029,7 +3483,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_186
+      name: Fall_Shoot_Forward_03
       rect:
         serializedVersion: 2
         x: 720
@@ -4050,7 +3504,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_187
+      name: Fall_Shoot_Forward_04
       rect:
         serializedVersion: 2
         x: 768
@@ -4066,48 +3520,6 @@ TextureImporter:
       bones: []
       spriteID: 65909c1f860677c4aba9ca1a553816bd
       internalID: 178272865
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_188
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 432
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f567a31f71941746b875284f8754012
-      internalID: -659459931
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_189
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 432
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 37890cd2954a1d942acee2ff1544cac3
-      internalID: -1427005867
       vertices: []
       indices: 
       edges: []
@@ -4470,48 +3882,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_207
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 384
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 16b3b803d71476b4492fcf09e2b054b2
-      internalID: -1857211302
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_208
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 384
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0c02491ceaf858844ab8c20496901991
-      internalID: 1259138531
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_209
       rect:
         serializedVersion: 2
@@ -4864,48 +4234,6 @@ TextureImporter:
       bones: []
       spriteID: 387d8ca578273d94b8bbba98d1e87079
       internalID: -961938894
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_226
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 336
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30c7f8e1d7e332046a1a8d0fb8fb96e1
-      internalID: 931197871
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_227
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 336
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0943051f07af5f4ca3135ea4f92cbc4
-      internalID: -1862299324
       vertices: []
       indices: 
       edges: []
@@ -5268,48 +4596,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_245
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 288
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c4b183193490b984c8ad0d6d3d47f2bd
-      internalID: 1994741184
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_246
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 288
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b18daf00cfc120945ae94ea128379305
-      internalID: 1280477432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_247
       rect:
         serializedVersion: 2
@@ -5662,48 +4948,6 @@ TextureImporter:
       bones: []
       spriteID: 3b1f41d61a6324949a43e9dc07d6e56d
       internalID: 589051867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_264
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 240
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e576cfd11b448b04cb885a360df234d9
-      internalID: 1051456155
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_265
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 240
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 595e7262e0c1a1242b095b1f2c87ed91
-      internalID: 894317935
       vertices: []
       indices: 
       edges: []
@@ -6066,48 +5310,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_283
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 192
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f0dc636f38b29114fab8bfc1f3c82482
-      internalID: -1386811620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_284
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 192
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 07471aeb8e87174409159c284ad4a539
-      internalID: 575721068
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_285
       rect:
         serializedVersion: 2
@@ -6460,48 +5662,6 @@ TextureImporter:
       bones: []
       spriteID: b28f33c78420a94458c4e9f54a8dc9de
       internalID: 2110048258
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_302
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 144
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f062912828bb0d428da09feeedc5145
-      internalID: -426137150
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_303
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 144
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cf442faf6389708408f889882aa49cd8
-      internalID: -1724457688
       vertices: []
       indices: 
       edges: []
@@ -6864,48 +6024,6 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_321
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 96
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdc296a1aea333447b5ecdb41a2fc965
-      internalID: -1339716796
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_322
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 96
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8d50a1b3830dd114ea69d4803b45362c
-      internalID: -1243260891
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: Spritesheet Shooting_323
       rect:
         serializedVersion: 2
@@ -7262,447 +6380,6 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_340
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 48
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 593dcdb79474dbc439ef5df3d75f945d
-      internalID: 1356609042
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_341
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 48
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48fbf16074051bc4c8b2d4d640e16bb5
-      internalID: -529423589
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_342
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 65ef15070af8f5641aa60c134d547aef
-      internalID: 823180495
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_343
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9db1580a1966c4f43bc1c8489c6dc915
-      internalID: 1131746562
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_344
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43300bd47d6d03644b002c01af082f06
-      internalID: 1536078845
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_345
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f603f2054f4f5e14087924b99d96ac96
-      internalID: 154628022
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_346
-      rect:
-        serializedVersion: 2
-        x: 192
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: efa9f59d08233764db13cf2b0c1bab74
-      internalID: -391082953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_347
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b3c1aa080664ed4488fae013376a53e
-      internalID: 105336373
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_348
-      rect:
-        serializedVersion: 2
-        x: 288
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e050ecc135510243a2a7e7a9e6c80bf
-      internalID: 1202934212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_349
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c7ff5525fbdfdc41a4b8af78af86823
-      internalID: -17308787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_350
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 464f59618ac98da4d9080a8021f57421
-      internalID: 1421435727
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_351
-      rect:
-        serializedVersion: 2
-        x: 432
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55a831967cad08445b9bc38988e52af1
-      internalID: 1591688103
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_352
-      rect:
-        serializedVersion: 2
-        x: 480
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 24de7a9a5315ef646a34850dcfccbcd4
-      internalID: -2143688771
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_353
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 67670d0d0bb852643a9b29600d2ed80e
-      internalID: 1138036481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_354
-      rect:
-        serializedVersion: 2
-        x: 576
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a920441581087154f831d614c4004eda
-      internalID: 885311397
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_355
-      rect:
-        serializedVersion: 2
-        x: 624
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea858d5405d6d9242ab7250a0545171a
-      internalID: -1370622164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_356
-      rect:
-        serializedVersion: 2
-        x: 672
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 139fa4f87b138104fa8a8f50e0be381a
-      internalID: -591642873
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_357
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d0dc56fe3c757144fbc1d3c4847b25e4
-      internalID: 621991793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_358
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bcd64cd9fcfea014b8c8b071ab44450d
-      internalID: 1675100981
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_359
-      rect:
-        serializedVersion: 2
-        x: 816
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3eb82e7b7c9b71f4f9fbf62be73258ce
-      internalID: -493205459
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Spritesheet Shooting_360
-      rect:
-        serializedVersion: 2
-        x: 864
-        y: 0
-        width: 48
-        height: 48
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c549286cca21324b8c6cbf548c32c6e
-      internalID: -1945223862
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -7716,6 +6393,14 @@ TextureImporter:
     nameFileIdTable:
       Crouch_Aim_Forward: -1852700153
       Crouch_Shoot_Forward: -1290838957
+      Fall_Aim_Forward_01: -1020262219
+      Fall_Aim_Forward_02: 828810727
+      Fall_Aim_Forward_03: 2080580616
+      Fall_Aim_Forward_04: -1260359685
+      Fall_Shoot_Forward_01: 413103416
+      Fall_Shoot_Forward_02: -1669079107
+      Fall_Shoot_Forward_03: 1540797041
+      Fall_Shoot_Forward_04: 178272865
       Idle_Aim_Forward: 1012991508
       Idle_Shoot_Forward: 144992998
       Running_Aim_Forward_01: 342682455
@@ -7799,19 +6484,11 @@ TextureImporter:
       Spritesheet Shooting_151: -1707421764
       Spritesheet Shooting_16: 2297243
       Spritesheet Shooting_164: 37677158
-      Spritesheet Shooting_165: -1020262219
-      Spritesheet Shooting_166: 828810727
-      Spritesheet Shooting_167: 2080580616
-      Spritesheet Shooting_168: -1260359685
       Spritesheet Shooting_169: -1769694277
       Spritesheet Shooting_17: -765772011
       Spritesheet Shooting_170: 1359149864
       Spritesheet Shooting_18: -725709822
       Spritesheet Shooting_183: -1187434411
-      Spritesheet Shooting_184: 413103416
-      Spritesheet Shooting_185: -1669079107
-      Spritesheet Shooting_186: 1540797041
-      Spritesheet Shooting_187: 178272865
       Spritesheet Shooting_188: -659459931
       Spritesheet Shooting_189: -1427005867
       Spritesheet Shooting_19: 21273808

@@ -6,8 +6,7 @@ using UnityEngine;
 namespace StatePattern{
     public class RunningPlayerState : IPlayerState{
         public IEnumerator Enter(Player player){
-            player.Animator.SetBool(Player.IsAimingAnimationParameter, false);
-            player.Animator.SetFloat(Player.AimingBlendAnimationParameter, 0f);
+            player.IsAiming = false;
             player.Animator.Play("Run Begin", 0, 0);
             yield break;
         }

@@ -5,15 +5,15 @@ namespace StatePattern{
     public class FallingPlayerState : IPlayerState{
         public IEnumerator Enter(Player player){
             if (player.LastState == PlayerState.Jumping){
-                yield return new WaitUntil(() => {
-                    var stateInfo = player.Animator.GetCurrentAnimatorStateInfo(0);
-                    return stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime) >= 0.9f;
-                });
+                while (!player.CheckGround()){
+                    AnimatorStateInfo stateInfo = player.Animator.GetCurrentAnimatorStateInfo(0);
+                    if (stateInfo.normalizedTime - Mathf.Floor(stateInfo.normalizedTime) >= 0.9f){ break; }
+                    player.ApplyMoveInput(true);
+                    yield return null;
+                }
                 yield return player.PlayAnimation("Jump_End");
-                yield return player.WaitUntilCurrentAnimationFinishes();
             }
-            player.Animator.Play("Fall_Begin");
-            yield break;
+            else{ player.Animator.Play("Fall_Begin"); }
         }
 
         public void Update(Player player){
@@ -42,7 +42,5 @@ namespace StatePattern{
         public IEnumerator Exit(Player player){
             yield break;
         }
-
-        
     }
 }

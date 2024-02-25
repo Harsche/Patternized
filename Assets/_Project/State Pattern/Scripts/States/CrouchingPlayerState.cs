@@ -5,9 +5,8 @@ namespace StatePattern{
     public class CrouchingPlayerState : IPlayerState{
         public IEnumerator Enter(Player player){
             player.Animator.SetBool(Player.IsCrouchingAnimationParameter, true);
-            player.Animator.SetBool(Player.IsAimingAnimationParameter, false);
-            player.Animator.SetFloat(Player.AimingBlendAnimationParameter, 0f);
-            yield break;
+            yield return player.PlayAnimation("Stand_To_Crouch");
+            yield return player.WaitUntilCurrentAnimationFinishes();
         }
 
         public void Update(Player player){
@@ -17,6 +16,7 @@ namespace StatePattern{
             }
 
             if (Input.GetKeyDown(KeyCode.LeftShift)){
+                player.Animator.Play("Crouch_Shoot_Forward", 0, 0);
                 player.Shoot();
                 return;
             }
@@ -28,8 +28,9 @@ namespace StatePattern{
         public void FixedUpdate(Player player){ }
 
         public IEnumerator Exit(Player player){
-            player.Animator.SetBool(Player.IsCrouchingAnimationParameter, false);
-            yield break;
+            player.IsAiming = false;
+            yield return player.PlayAnimation("Crouch_To_Stand");
+            yield return player.WaitUntilCurrentAnimationFinishes();
         }
     }
 }

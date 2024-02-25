@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace StatePattern{
     public class Projectile : MonoBehaviour{
@@ -7,6 +8,10 @@ namespace StatePattern{
         
         public void SetDirection(Vector2 direction){
             _rigidbody2D.velocity = direction * _speed;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other){
+            Destroy(gameObject);
         }
     }
 }

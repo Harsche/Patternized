@@ -7,14 +7,18 @@ namespace StatePattern{
 
         public IEnumerator Enter(Player player){
             _physicsUpdatesSinceEnter = 0;
+            player.IsAiming = false;
             string targetAnimation = player.LastState == PlayerState.Idle ? "Jump_Idle_Begin" : "Jump_Run_Begin";
-            player.Animator.Play(targetAnimation);
-            player.Animator.SetBool(Player.IsAimingAnimationParameter, false);
-            player.Animator.SetFloat(Player.AimingBlendAnimationParameter, 0f);
-            yield break;
+            yield return player.PlayAnimation(targetAnimation);
+            yield return new WaitWhile(player.CheckGround);
         }
 
-        public void Update(Player player){ }
+        public void Update(Player player){
+            if (player.CheckWallGrab()){
+                player.ChangeState(PlayerState.WallGrab);
+                return;
+            }
+        }
 
         public void FixedUpdate(Player player){
             _physicsUpdatesSinceEnter++;
@@ -28,15 +32,9 @@ namespace StatePattern{
                 player.ChangeState(targetState);
                 return;
             }
-            
-            if (player.CheckWallGrab()){
-                player.ChangeState(PlayerState.WallGrab);
-                return;
-            }
 
             if (velocity.y <= 0){
                 player.ChangeState(PlayerState.Falling);
-                return;
             }
 
             float horizontal = Input.GetAxisRaw("Horizontal");

@@ -7,7 +7,7 @@ namespace StatePattern{
 
         public IEnumerator Enter(Player player){
             DirectionOnExitMorphing = player.transform.localScale.x;
-            player.Animator.SetFloat(Player.AimingBlendAnimationParameter, 0f);
+            player.IsAiming = false;
             player.Rigidbody.gravityScale = 0;
             yield return player.PlayAnimation("To_Morph_Ball");
             yield return player.WaitUntilCurrentAnimationFinishes();

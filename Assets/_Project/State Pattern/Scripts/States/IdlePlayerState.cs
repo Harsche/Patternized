@@ -6,22 +6,31 @@ namespace StatePattern{
     public class IdlePlayerState : IPlayerState{
         public IEnumerator Enter(Player player){
             player.Rigidbody.velocity = Vector2.zero;
-            string targetAnimation = player.LastState switch{
-                PlayerState.Idle => "Idle_1",
-                PlayerState.Running => "Run Stop",
-                PlayerState.Jumping => "Idle_1",
-                PlayerState.Crouching => "Idle_1",
-                PlayerState.MorphBall => "Idle_1",
-                PlayerState.Falling => "Fall_End",
-                _ => throw new ArgumentOutOfRangeException()
-            };
+            string targetAnimation;
+
+            if (player.IsAiming){ targetAnimation = "Stand Shoot Forward"; }
+            else{
+                targetAnimation = player.LastState switch{
+                    PlayerState.Idle => "Idle_1",
+                    PlayerState.Running => "Run Stop",
+                    PlayerState.Jumping => "Idle_1",
+                    PlayerState.Crouching => "Idle_1",
+                    PlayerState.MorphBall => "Idle_1",
+                    PlayerState.Falling => "Fall_End",
+                    PlayerState.WallGrab => "Idle_1",
+                    _ => throw new ArgumentOutOfRangeException()
+                };
+            }
             player.Animator.Play(targetAnimation);
-            player.Animator.SetBool(Player.IsAimingAnimationParameter, false);
-            player.Animator.SetFloat(Player.AimingBlendAnimationParameter, 0f);
             yield break;
         }
 
         public void Update(Player player){
+            if (!player.CheckGround()){
+                player.ChangeState(PlayerState.Falling);
+                return;
+            }
+            
             if (Input.GetKeyDown(KeyCode.Space)){
                 player.ChangeState(PlayerState.Jumping);
                 return;
@@ -33,10 +42,11 @@ namespace StatePattern{
             }
 
             if (Input.GetKeyDown(KeyCode.LeftShift)){
+                player.Animator.Play("Stand Shoot Forward");
                 player.Shoot();
                 return;
             }
-            
+
             if (Input.GetKeyDown(KeyCode.R)){
                 player.ChangeState(PlayerState.MorphBall);
                 return;
@@ -48,6 +58,8 @@ namespace StatePattern{
 
         public void FixedUpdate(Player player){ }
 
-        public IEnumerator Exit(Player player){yield break; }
+        public IEnumerator Exit(Player player){
+            yield break;
+        }
     }
 }
