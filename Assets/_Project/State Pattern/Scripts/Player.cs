@@ -20,7 +20,7 @@ namespace StatePattern{
         [SerializeField] private PlayerState _currentState;
 
         private readonly ContactPoint2D[] _groundContact = new ContactPoint2D[1];
-        private readonly Dictionary<PlayerState, IPlayerState> _states = new();
+        private readonly Dictionary<PlayerState, IState> _states = new();
         private bool _isAiming;
         private bool _canShoot = true;
         private Coroutine _changeStateCoroutine;
@@ -35,6 +35,8 @@ namespace StatePattern{
         [field: SerializeField] public Transform ProjectileSpawn{ get; private set; }
         [field: SerializeField] public Transform WallGrabRaycast{ get; private set; }
         [field: SerializeField] public float WallGrabRaycastDistance{ get; private set; }
+        [field: SerializeField] public Transform MorphSlideMidAirRaycast{ get; private set; }
+        [field: SerializeField] public float MorphSlideMidAirRaycastDistance{ get; private set; }
         [field: SerializeField] public ContactFilter2D GroundContactFilter{ get; private set; }
 
         public PlayerState LastState{ get; private set; }
@@ -59,12 +61,12 @@ namespace StatePattern{
 
             InitialGravityScale = Rigidbody.gravityScale;
 
-            _states.Add(PlayerState.Idle, new IdlePlayerState());
-            _states.Add(PlayerState.Running, new RunningPlayerState());
-            _states.Add(PlayerState.Jumping, new JumpingPlayerState());
-            _states.Add(PlayerState.Falling, new FallingPlayerState());
-            _states.Add(PlayerState.Crouching, new CrouchingPlayerState());
-            _states.Add(PlayerState.MorphBall, new MorphBallPlayerState());
+            _states.Add(PlayerState.Idle, new IdleState());
+            _states.Add(PlayerState.Running, new RunningState());
+            _states.Add(PlayerState.Jumping, new JumpingState());
+            _states.Add(PlayerState.Falling, new FallingState());
+            _states.Add(PlayerState.Crouching, new CrouchingState());
+            _states.Add(PlayerState.MorphBall, new MorphBallState());
             _states.Add(PlayerState.WallGrab, new WallGrabState());
 
             LastState = PlayerState.Idle;
@@ -147,7 +149,7 @@ namespace StatePattern{
         }
 
         public void SetScaleAfterMorphing(){
-            float xScale = ((MorphBallPlayerState) _states[PlayerState.MorphBall]).DirectionOnExitMorphing;
+            float xScale = ((MorphBallState) _states[PlayerState.MorphBall]).DirectionOnExitMorphing;
             transform.localScale = new Vector3(xScale, 1, 1);
         }
 
@@ -164,7 +166,15 @@ namespace StatePattern{
             Vector2 direction2 = Vector2.down;
             float distance2 = 0.3f;
             RaycastHit2D hit2 = Physics2D.Raycast(origin2, direction2, distance2, layerMask);
-            return hit2.collider != null;
+            bool wallGrab =  hit2.collider != null;
+
+            if (wallGrab){
+                Vector2 offset = hit2.point - origin1;
+                offset.x = 0;
+                Rigidbody.MovePosition((Vector2)transform.position + offset);
+            }
+
+            return wallGrab;
         }
 
         private IEnumerator ChangeStateCoroutine(PlayerState state){

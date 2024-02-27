@@ -1513,6 +1513,7 @@ MonoBehaviour:
   _patternsData:
   - {fileID: 11400000, guid: 7c9375127cf0d0f47a939fce6cea2e71, type: 2}
   - {fileID: 11400000, guid: d676fc86aebac444ea4d8a7383e420a4, type: 2}
+  - {fileID: 11400000, guid: 61904458316b6b14288e7f602f67c103, type: 2}
   _patternList: {fileID: 762387887}
   _patternButtonPrefab: {fileID: 7059222226595185319, guid: 9539c130ec05d82438d2907629405c23, type: 3}
   _chooseGame: {fileID: 724344383}

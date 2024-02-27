@@ -50,7 +50,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -3063,7 +3063,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_164
+      name: Wall_Grab_Aim_Forward
       rect:
         serializedVersion: 2
         x: 576
@@ -3420,7 +3420,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Spritesheet Shooting_183
+      name: Wall_Grab_Shoot_Forward
       rect:
         serializedVersion: 2
         x: 576
@@ -6483,12 +6483,10 @@ TextureImporter:
       Spritesheet Shooting_150: -373894232
       Spritesheet Shooting_151: -1707421764
       Spritesheet Shooting_16: 2297243
-      Spritesheet Shooting_164: 37677158
       Spritesheet Shooting_169: -1769694277
       Spritesheet Shooting_17: -765772011
       Spritesheet Shooting_170: 1359149864
       Spritesheet Shooting_18: -725709822
-      Spritesheet Shooting_183: -1187434411
       Spritesheet Shooting_188: -659459931
       Spritesheet Shooting_189: -1427005867
       Spritesheet Shooting_19: 21273808
@@ -6751,7 +6749,9 @@ TextureImporter:
       Spritesheet Shooting_98: 966165213
       Spritesheet Shooting_99: 759774399
       Wall_Grab_Aim_Down: 931242126
+      Wall_Grab_Aim_Forward: 37677158
       Wall_Grab_Shoot_Down: 1309942859
+      Wall_Grab_Shoot_Forward: -1187434411
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Collectable
   - Ground
+  - Projectile
+  - Destroyable
   layers:
   - Default
   - TransparentFX
@@ -40,6 +42,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 3126112115
+    locked: 0
+  - name: Character
+    uniqueID: 23137461
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
