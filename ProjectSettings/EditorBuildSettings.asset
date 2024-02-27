@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/Command Pattern/Command Pattern.unity
     guid: 1b9e5ff3cb73e8b4d9d8ff3805e1fe30
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Flyweight Pattern/Flyweight Pattern.unity
     guid: 1afd7c60c4d7ac64296220ea70bfbc67
   - enabled: 1

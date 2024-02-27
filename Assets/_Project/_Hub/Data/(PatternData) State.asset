@@ -13,15 +13,11 @@ MonoBehaviour:
   m_Name: (PatternData) State
   m_EditorClassIdentifier: 
   <PatternName>k__BackingField: State Pattern
-  <PatternThumbnail>k__BackingField: {fileID: 21300000, guid: e539d6e34355d1f4da15467e70046ba1, type: 3}
-  <PatternDescription>k__BackingField: Encapsulate a request as an object, thereby
-    letting users parameterize clients with different requests, queue or log requests,
-    and support undoable operations.
-  <HowToPlay>k__BackingField: Click on a tile to make the character walk there. Use
-    the undo/redo buttons to see it go back and forth on the same path.
-  <PatternUsage>k__BackingField: The character's movement was abstracted to a Walk
-    Command that contains an ordered list of cells that form a path and a target
-    Character. By saving the Commands in a List, we can make the character undo and
-    redo the exact same steps simply by switching Commands and reversing the path
-    when necessary.
+  <PatternThumbnail>k__BackingField: {fileID: 21300000, guid: a071c7ab02ec88d4c998ef20995dc22e, type: 3}
+  <PatternDescription>k__BackingField: Allow an object to alter its behavior when
+    its internal state changes. The object will appear to change its class.
+  <HowToPlay>k__BackingField: Proceed through the level and test all the possible
+    mechanics the player controller allows.
+  <PatternUsage>k__BackingField: Each of the states the character can be into (idle,
+    running, jumping, etc) is a State object that controls its own behaviour.
   <SceneName>k__BackingField: State Pattern

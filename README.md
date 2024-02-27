@@ -21,7 +21,7 @@ Here's the current stage of development for each pattern:
 * Observer⏳
 * Prototype
 * Singleton
-* State
+* [State](https://github.com/Harsche/Patternized/tree/master/Assets/_Project/State%20Pattern) ✅
 * Double Buffer
 * Game Loop
 * Update Method
@@ -37,4 +37,4 @@ Here's the current stage of development for each pattern:
 * Spatial Partition
 
 ## Credits
-Assets provided by [Kenney](https://www.kenney.nl/) and [Quaternius](https://quaternius.com/index.html)
+Assets provided by [Kenney](https://www.kenney.nl/), [Quaternius](https://quaternius.com/index.html) and [Emcee Flesher](https://opengameart.org/users/emcee-flesher)
