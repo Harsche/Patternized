@@ -1,0 +1,18 @@
+root = true
+# Indicates that this is the root .editorconfig file. No other .editorconfig files above this directory will be applied.
+
+[*.cs]
+# Applies the following rules to all C# files (*.cs).
+
+indent_style = space # Specifies that spaces should be used for indentation.
+indent_size = 4 # Sets the number of spaces per indentation level to 4.
+end_of_line = crlf # Defines the line ending format as "carriage return + line feed" (CRLF), commonly used in Windows.
+charset = utf-8 # Specifies the character encoding as UTF-8.
+
+trim_trailing_whitespace = true # Removes any trailing whitespace at the end of lines.
+insert_final_newline = true # Ensures that files end with a newline.
+
+csharp_new_line_before_open_brace = none  # Configures C# code style to not insert a new line before an opening brace.
+csharp_new_line_before_else = true # Ensures a new line is added before the `else` keyword in C# code.
+csharp_new_line_before_catch = true # Ensures a new line is added before the `catch` keyword in C# code.
+csharp_new_line_before_finally = true # Ensures a new line is added before the `finally` keyword in C# code.
