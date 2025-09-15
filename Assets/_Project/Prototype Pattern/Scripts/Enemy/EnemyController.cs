@@ -7,7 +7,18 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] private int _hitDamage;
+    [SerializeField] private int _speed;
     [SerializeField] private int _knockbackForce;
+
+    [SerializeField] private PlayerController _player;
+
+    private void Update()
+    {
+        if (_player != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, _player.gameObject.transform.position, _speed * Time.deltaTime);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
