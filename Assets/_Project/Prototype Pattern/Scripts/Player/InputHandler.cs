@@ -1,95 +1,53 @@
 using System;
-using System.Collections;
-using PrototypePattern.Input;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-namespace PrototypePattern.Player
+namespace PrototypePattern.Input
 {
     public class InputHandler : MonoBehaviour
     {
-        [Header("Components")]
-        private PlayerController _player;
+        // Events
+        public event Action OnAttack;
+
+        // Vector Properties
+        public Vector2 MoveDirection { get; private set; }
+        public Vector3 MousePosition { get; private set; }
+
+        // Components
         private PlayerControls _playerControls;
-        private Rigidbody2D _rigidBody2D;
-
-        [Header("Input Actions")]
-        private InputAction _attack;
-        private InputAction _move;
-
-        [Header("Movement Settings")]
-        [SerializeField] private Vector2 _direction;
-        [SerializeField] private float _speed = 20f;
 
         private void Awake()
         {
             _playerControls = new PlayerControls();
-
-            _rigidBody2D = GetComponent<Rigidbody2D>();
-            _player = GetComponent<PlayerController>();
-        }
-        private void FixedUpdate()
-        {
-            if (!_player.Invincible)
-            {
-                _rigidBody2D.velocity = _direction * _speed;
-            }
         }
 
         private void OnEnable()
         {
+            _playerControls.Player.Move.performed += ctx => MoveDirection = ctx.ReadValue<Vector2>();
+            _playerControls.Player.Move.canceled += ctx => MoveDirection = Vector2.zero;
 
-            _move = _playerControls.Player.Move;
-            _move.performed += HandleMovement;
-            _move.canceled += HandleMovement;
+            _playerControls.Player.Attack.performed += ctx => OnAttack?.Invoke();
 
-            _attack = _playerControls.Player.Attack;
-            _attack.performed += HandleAttack;
+            _playerControls.Player.Aim.performed += ctx => MousePosition = ctx.ReadValue<Vector2>();
 
             _playerControls.Enable();
         }
+
         private void OnDisable()
         {
-            _move.performed -= HandleMovement;
-            _move.canceled -= HandleMovement;
+            _playerControls.Player.Move.performed -= ctx => MoveDirection = ctx.ReadValue<Vector2>();
+            _playerControls.Player.Move.canceled -= ctx => MoveDirection = Vector2.zero;
 
-            _attack.performed -= HandleAttack;
+            _playerControls.Player.Attack.performed -= ctx => OnAttack?.Invoke();
+
+            _playerControls.Player.Aim.performed -= ctx => MousePosition = ctx.ReadValue<Vector2>();
 
             _playerControls.Disable();
         }
-        private void HandleMovement(InputAction.CallbackContext context)
-        {
-            if (context.performed)
-            {
-                _direction = context.ReadValue<Vector2>();
-            }
-            else if (context.canceled)
-            {
-                _direction = Vector2.zero;
-            }
-        }
 
-        private void HandleAttack(InputAction.CallbackContext context)
+        public Vector3 GetMouseWorldPosition()
         {
-            if (context.performed)
-            {
-                Debug.Log("Attacking!");
-            }
-        }
-
-        public void ApplyKnockback(Vector2 knockback, float duration = 0.1f)
-        {
-            StartCoroutine(KnockbackCoroutine(knockback, duration));
-        }
-
-        private IEnumerator KnockbackCoroutine(Vector2 knockback, float duration)
-        {
-            _player.Invincible = true;
-            _rigidBody2D.AddForce(knockback, ForceMode2D.Impulse);
-            
-            yield return new WaitForSeconds(duration);
-            
-            _player.Invincible = false;
+            Vector3 worldPosition = Camera.main.ScreenToWorldPoint(MousePosition);
+            return worldPosition;
         }
     }
 }
