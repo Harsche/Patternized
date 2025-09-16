@@ -8,21 +8,23 @@ namespace PrototypePattern.Player
 {
     public class InputHandler : MonoBehaviour
     {
+        [Header("Components")]
         private PlayerController _player;
         private PlayerControls _playerControls;
+        private Rigidbody2D _rigidBody2D;
 
+        [Header("Input Actions")]
         private InputAction _attack;
         private InputAction _move;
 
-        private Rigidbody2D _rigidBody2D;
-
+        [Header("Movement Settings")]
         [SerializeField] private Vector2 _direction;
         [SerializeField] private float _speed = 20f;
-        [SerializeField] private bool _isInKnockback = false;
 
         private void Awake()
         {
             _playerControls = new PlayerControls();
+
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _player = GetComponent<PlayerController>();
         }

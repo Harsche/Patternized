@@ -6,16 +6,20 @@ namespace PrototypePattern.Player
 {
     public class PlayerController : MonoBehaviour, IDamageable
     {
+        [Header("Health Settings")]
         [SerializeField] private float _health;
 
+        [Header("Knockback Settings")]
         [Range(0f, 1f)]
         [SerializeField] private float _knockbackDuration = 0.1f;
 
+        [Header("Status Settings")]
         [SerializeField] private bool _targetable = true;
         [SerializeField] private bool _invincible = false;
-        [SerializeField] private Collider2D _physicsCollider;
 
-        [SerializeField] private Rigidbody2D _rigidBody2D;
+        [Header("Components")]
+        private Collider2D _physicsCollider;
+        private Rigidbody2D _rigidBody2D;
         private InputHandler _inputHandler;
 
         public float Health
@@ -44,7 +48,7 @@ namespace PrototypePattern.Player
         public bool Invincible
         {
             get => _invincible;
-            private set
+            set
             {
                 _invincible = value;
                 _physicsCollider.enabled = !Invincible;
