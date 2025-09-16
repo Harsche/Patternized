@@ -17,4 +17,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Project/State Pattern/State Pattern.unity
     guid: 0132fcc0211a2334fa60fa2d54d23fcb
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 87ab334d3bcb89d46866b4d494c12c79, type: 2}
