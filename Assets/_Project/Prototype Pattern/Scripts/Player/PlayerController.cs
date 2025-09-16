@@ -10,7 +10,7 @@ namespace PrototypePattern.Player
 
         [Range(0f, 1f)]
         [SerializeField] private float _knockbackDuration = 0.1f;
-        
+
         [SerializeField] private bool _targetable = true;
         [SerializeField] private bool _invincible = false;
         [SerializeField] private Collider2D _physicsCollider;
@@ -21,7 +21,7 @@ namespace PrototypePattern.Player
         public float Health
         {
             get => _health;
-            set
+            private set
             {
                 _health = value;
                 if (_health <= 0)
@@ -35,7 +35,7 @@ namespace PrototypePattern.Player
         public bool Targetable
         {
             get => _targetable;
-            set
+            private set
             {
                 _targetable = value;
             }
@@ -44,7 +44,7 @@ namespace PrototypePattern.Player
         public bool Invincible
         {
             get => _invincible;
-            set
+            private set
             {
                 _invincible = value;
                 _physicsCollider.enabled = !Invincible;
@@ -56,11 +56,6 @@ namespace PrototypePattern.Player
             _physicsCollider = GetComponent<Collider2D>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _inputHandler = GetComponent<InputHandler>();
-        }
-
-        public void OnDeath()
-        {
-            Debug.Log("Died!");
         }
 
         public void OnHit(int damage, Vector2 knockback)
@@ -76,6 +71,10 @@ namespace PrototypePattern.Player
         {
             Debug.Log($"Took {damage} damage!");
             Health -= damage;
+        }
+        public void OnDeath()
+        {
+            Debug.Log("Died!");
         }
     }
 }
