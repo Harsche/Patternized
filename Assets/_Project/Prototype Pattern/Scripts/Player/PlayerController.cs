@@ -1,9 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
+using PrototypePattern.Input;
 using UnityEngine;
 
 namespace PrototypePattern.Player
 {
+    [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(Collider2D))]
+    [RequireComponent(typeof(InputHandler))]
     public class PlayerController : MonoBehaviour, IDamageable
     {
         [Header("Health Settings")]
@@ -61,16 +64,14 @@ namespace PrototypePattern.Player
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _inputHandler = GetComponent<InputHandler>();
         }
-
         public void OnHit(int damage, Vector2 knockback)
         {
             if (Targetable && !Invincible)
             {
                 Health -= damage;
-                _inputHandler.ApplyKnockback(knockback, _knockbackDuration);
+                StartCoroutine(ApplyKnockback(knockback, _knockbackDuration));
             }
         }
-
         public void OnHit(int damage)
         {
             Debug.Log($"Took {damage} damage!");
@@ -79,6 +80,13 @@ namespace PrototypePattern.Player
         public void OnDeath()
         {
             Debug.Log("Died!");
+        }
+        private IEnumerator ApplyKnockback(Vector2 knockback, float duration)
+        {
+            Invincible = true;
+            _rigidBody2D.AddForce(knockback, ForceMode2D.Impulse);
+            yield return new WaitForSeconds(duration);
+            Invincible = false;
         }
     }
 }
