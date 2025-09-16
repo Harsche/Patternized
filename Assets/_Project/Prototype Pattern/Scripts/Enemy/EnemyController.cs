@@ -16,7 +16,8 @@ public class EnemyController : MonoBehaviour
     {
         if (_player != null)
         {
-            transform.position = Vector2.MoveTowards(transform.position, _player.gameObject.transform.position, _speed * Time.deltaTime);
+            Vector2 playerPosition = _player.transform.position;
+            transform.position = Vector2.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
         }
     }
 

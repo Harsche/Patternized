@@ -16,26 +16,26 @@ namespace PrototypePattern.Player
 
         private Rigidbody2D _rigidBody2D;
 
-        [SerializeField] private Vector2 direction;
+        [SerializeField] private Vector2 _direction;
         [SerializeField] private float _speed = 20f;
         [SerializeField] private bool _isInKnockback = false;
 
-        private void Start()
+        private void Awake()
         {
+            _playerControls = new PlayerControls();
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _player = GetComponent<PlayerController>();
         }
         private void FixedUpdate()
         {
-            if (!_player.Invencible)
+            if (!_player.Invincible)
             {
-                _rigidBody2D.velocity = new Vector2(direction.x * _speed, direction.y * _speed);
+                _rigidBody2D.velocity = _direction * _speed;
             }
         }
 
         private void OnEnable()
         {
-            _playerControls = new PlayerControls();
 
             _move = _playerControls.Player.Move;
             _move.performed += HandleMovement;
@@ -59,11 +59,11 @@ namespace PrototypePattern.Player
         {
             if (context.performed)
             {
-                direction = context.ReadValue<Vector2>();
+                _direction = context.ReadValue<Vector2>();
             }
             else if (context.canceled)
             {
-                direction = Vector2.zero;
+                _direction = Vector2.zero;
             }
         }
 
@@ -71,7 +71,7 @@ namespace PrototypePattern.Player
         {
             if (context.performed)
             {
-                Debug.Log("Atacando!");
+                Debug.Log("Attacking!");
             }
         }
 
@@ -82,12 +82,12 @@ namespace PrototypePattern.Player
 
         private IEnumerator KnockbackCoroutine(Vector2 knockback, float duration)
         {
-            _player.Invencible = true;
+            _player.Invincible = true;
             _rigidBody2D.AddForce(knockback, ForceMode2D.Impulse);
             
             yield return new WaitForSeconds(duration);
             
-            _player.Invencible = false;
+            _player.Invincible = false;
         }
     }
 }

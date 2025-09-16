@@ -7,8 +7,12 @@ namespace PrototypePattern.Player
     public class PlayerController : MonoBehaviour, IDamageable
     {
         [SerializeField] private float _health;
+
+        [Range(0f, 1f)]
+        [SerializeField] private float _knockbackDuration = 0.1f;
+        
         [SerializeField] private bool _targetable = true;
-        [SerializeField] private bool _invencible = false;
+        [SerializeField] private bool _invincible = false;
         [SerializeField] private Collider2D _physicsCollider;
 
         [SerializeField] private Rigidbody2D _rigidBody2D;
@@ -37,17 +41,17 @@ namespace PrototypePattern.Player
             }
         }
 
-        public bool Invencible
+        public bool Invincible
         {
-            get => _invencible;
+            get => _invincible;
             set
             {
-                _invencible = value;
-                _physicsCollider.enabled = !Invencible; 
+                _invincible = value;
+                _physicsCollider.enabled = !Invincible;
             }
         }
 
-        private void Start()
+        private void Awake()
         {
             _physicsCollider = GetComponent<Collider2D>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
@@ -56,25 +60,22 @@ namespace PrototypePattern.Player
 
         public void OnDeath()
         {
-            Debug.Log("Morreu!");
+            Debug.Log("Died!");
         }
 
         public void OnHit(int damage, Vector2 knockback)
         {
-            if (Targetable && !Invencible)
+            if (Targetable && !Invincible)
             {
                 Health -= damage;
-                _inputHandler.ApplyKnockback(knockback, 0.1f);
+                _inputHandler.ApplyKnockback(knockback, _knockbackDuration);
             }
         }
 
         public void OnHit(int damage)
         {
-            if (Targetable && !Invencible)
-            {
-                Debug.Log($"Tomou {damage} de dano!");
-                Health -= damage;
-            }
+            Debug.Log($"Took {damage} damage!");
+            Health -= damage;
         }
     }
 }
