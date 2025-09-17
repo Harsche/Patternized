@@ -4,13 +4,30 @@ using PrototypePattern;
 using PrototypePattern.Player;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IDamageable
 {
+    [SerializeField] private float _health;
+
     [SerializeField] private int _hitDamage;
     [SerializeField] private int _speed;
     [SerializeField] private int _knockbackForce;
-
     [SerializeField] private PlayerController _player;
+
+    public float Health
+    {
+        get => _health;
+        private set
+        {
+            _health = value;
+            if (_health <= 0)
+            {
+                OnDeath();
+            }
+        }
+    }
+
+    public bool Targetable { get; }
+    public bool Invincible { get; set; }
 
     private void Update()
     {
@@ -31,5 +48,18 @@ public class EnemyController : MonoBehaviour
 
             player.OnHit(_hitDamage, knockback);
         }
+    }
+
+    public void OnHit(int damage, Vector2 knockback)
+    {}
+
+    public void OnHit(int damage)
+    {
+        Health -= damage;
+    }
+
+    public void OnDeath()
+    {
+        Destroy(gameObject);
     }
 }

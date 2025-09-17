@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PrototypePattern.Player.Gun
@@ -8,7 +6,7 @@ namespace PrototypePattern.Player.Gun
     [RequireComponent(typeof(Collider2D))]
     public class PlayerBullet : MonoBehaviour, IPrototype
     {
-        [SerializeField] private float _bulletDamage = 1f;
+        [SerializeField] private int _bulletDamage = 1;
 
         public GameObject Clone()
         {
@@ -26,7 +24,8 @@ namespace PrototypePattern.Player.Gun
 
             if (collider2D.TryGetComponent(out EnemyController enemy))
             {
-
+                enemy.OnHit(_bulletDamage);
+                Destroy(gameObject);
             }
         }
     }

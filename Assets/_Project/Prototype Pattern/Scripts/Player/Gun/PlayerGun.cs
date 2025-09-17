@@ -1,5 +1,7 @@
 using PrototypePattern.Input;
+using Unity.Entities.UniversalDelegates;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace PrototypePattern.Player.Gun
 {
@@ -13,6 +15,8 @@ namespace PrototypePattern.Player.Gun
         [SerializeField] private Transform _bulletParent;
         [SerializeField] private PlayerBullet _bulletPrefab;
         [SerializeField] private float _bulletSpeed = 25f;
+
+        [SerializeField] private Image _aim;
 
         private void Awake()
         {
@@ -34,6 +38,9 @@ namespace PrototypePattern.Player.Gun
         private void Aim()
         {
             Vector3 direction = GetMouseDirection();
+
+            _aim.rectTransform.position = _inputHandler.MousePosition;
+
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             _player.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
