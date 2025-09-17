@@ -4,14 +4,14 @@ using PrototypePattern;
 using PrototypePattern.Player;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IDamageable
+public class EnemyController : MonoBehaviour, IDamageable, IPrototype
 {
-    [SerializeField] private float _health;
+    private float _health;
+    private int _hitDamage;
+    private int _speed = 5;
+    public int _knockbackForce;
 
-    [SerializeField] private int _hitDamage;
-    [SerializeField] private int _speed;
-    [SerializeField] private int _knockbackForce;
-    [SerializeField] private PlayerController _player;
+    public PlayerController Player;
 
     public float Health
     {
@@ -28,16 +28,37 @@ public class EnemyController : MonoBehaviour, IDamageable
 
     public bool Targetable { get; }
     public bool Invincible { get; set; }
-
+    private void Awake()
+    {
+        Player = FindObjectOfType<PlayerController>(); // Ignore this, just testing
+    }
     private void Update()
     {
-        if (_player != null)
+        EnemyChasing();
+    }
+    public GameObject Clone()
+    {
+        GameObject clone = Instantiate(gameObject);
+        return clone;
+    }
+    public GameObject Clone(Vector3 position)
+    {
+        GameObject clone = Instantiate(gameObject, position, Quaternion.identity);
+        return clone;
+    }
+    private void EnemyChasing()
+    {
+        if (Player != null)
         {
-            Vector2 playerPosition = _player.transform.position;
+            Vector2 playerPosition = Player.transform.position;
             transform.position = Vector2.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
         }
     }
-
+    public void OnHit(int damage, Vector2 knockback) { }
+    public void OnHit(int damage)
+    {
+        Health -= damage;
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D collider2D = collision.collider;
@@ -48,14 +69,6 @@ public class EnemyController : MonoBehaviour, IDamageable
 
             player.OnHit(_hitDamage, knockback);
         }
-    }
-
-    public void OnHit(int damage, Vector2 knockback)
-    {}
-
-    public void OnHit(int damage)
-    {
-        Health -= damage;
     }
 
     public void OnDeath()

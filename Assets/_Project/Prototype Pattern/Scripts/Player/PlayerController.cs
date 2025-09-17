@@ -85,8 +85,25 @@ namespace PrototypePattern.Player
         {
             Invincible = true;
             _rigidBody2D.AddForce(knockback, ForceMode2D.Impulse);
+            StartCoroutine(HitTwinkle(1f));
             yield return new WaitForSeconds(duration);
             Invincible = false;
         }
+        private IEnumerator HitTwinkle(float timer)
+        {
+            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+            Color originalColor = spriteRenderer.color;
+            float elapsedTime = 0f;
+
+            while (elapsedTime <= timer)
+            {
+                spriteRenderer.color = Color.Lerp(originalColor, Color.red, Mathf.PingPong(Time.time * 5f, 1f));
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+
+            spriteRenderer.color = originalColor;
+        }
+
     }
 }
