@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5924540870320628611}
   - component: {fileID: 715785792027214652}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Normal Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -96,10 +96,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1332801318711025728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31dccb4ca118585409beb44ad0b030ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 2fafb6a7356b5a74a964b044eaf5d403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletDamage: 1
+  _bulletDamage: 10
+  _speed: 6
+  _cooldown: 0.5
+  _lifetime: 5
 --- !u!58 &5924540870320628611
 CircleCollider2D:
   m_ObjectHideFlags: 0

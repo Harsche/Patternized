@@ -7,6 +7,7 @@ namespace PrototypePattern.Input
     {
         // Events
         public event Action OnAttack;
+        public event Action OnReload;
 
         // Vector Properties
         public Vector2 MoveDirection { get; private set; }
@@ -22,24 +23,26 @@ namespace PrototypePattern.Input
 
         private void OnEnable()
         {
+            _playerControls.Player.Aim.performed += ctx => MousePosition = ctx.ReadValue<Vector2>();
+
             _playerControls.Player.Move.performed += ctx => MoveDirection = ctx.ReadValue<Vector2>();
             _playerControls.Player.Move.canceled += ctx => MoveDirection = Vector2.zero;
 
             _playerControls.Player.Attack.performed += ctx => OnAttack?.Invoke();
-
-            _playerControls.Player.Aim.performed += ctx => MousePosition = ctx.ReadValue<Vector2>();
+            _playerControls.Player.Reload.performed += ctx => OnReload?.Invoke();
 
             _playerControls.Enable();
         }
 
         private void OnDisable()
         {
+            _playerControls.Player.Aim.performed -= ctx => MousePosition = ctx.ReadValue<Vector2>();
+
             _playerControls.Player.Move.performed -= ctx => MoveDirection = ctx.ReadValue<Vector2>();
             _playerControls.Player.Move.canceled -= ctx => MoveDirection = Vector2.zero;
 
             _playerControls.Player.Attack.performed -= ctx => OnAttack?.Invoke();
-
-            _playerControls.Player.Aim.performed -= ctx => MousePosition = ctx.ReadValue<Vector2>();
+            _playerControls.Player.Reload.performed -= ctx => OnReload?.Invoke();
 
             _playerControls.Disable();
         }
