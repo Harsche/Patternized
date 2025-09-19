@@ -50,10 +50,8 @@ namespace PrototypePattern.Player.Gun.Bullets
 
         protected virtual void OnTriggerEnter2D(Collider2D collider2D)
         {
-            // Don't hit the player
             if (collider2D.TryGetComponent(out PlayerController player)) return;
 
-            // Hit enemies
             if (collider2D.TryGetComponent(out EnemyController enemy))
             {
                 enemy.OnHit(_bulletDamage);

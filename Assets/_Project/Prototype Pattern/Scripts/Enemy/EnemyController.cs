@@ -4,75 +4,78 @@ using PrototypePattern;
 using PrototypePattern.Player;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IDamageable, IPrototype
+namespace PrototypePattern.Enemy
 {
-    private float _health;
-    private int _hitDamage;
-    private int _speed = 5;
-    public int _knockbackForce;
-
-    public PlayerController Player;
-
-    public float Health
+    public class EnemyController : MonoBehaviour, IDamageable, IPrototype<EnemyController>
     {
-        get => _health;
-        private set
+        private float _health;
+        private int _hitDamage;
+        private int _speed = 5;
+        public int _knockbackForce;
+
+        public PlayerController Player;
+
+        public float Health
         {
-            _health = value;
-            if (_health <= 0)
+            get => _health;
+            private set
             {
-                OnDeath();
+                _health = value;
+                if (_health <= 0)
+                {
+                    OnDeath();
+                }
             }
         }
-    }
 
-    public bool Targetable { get; }
-    public bool Invincible { get; set; }
-    private void Awake()
-    {
-        Player = FindObjectOfType<PlayerController>(); // Ignore this, just testing
-    }
-    private void Update()
-    {
-        EnemyChasing();
-    }
-    public GameObject Clone()
-    {
-        GameObject clone = Instantiate(gameObject);
-        return clone;
-    }
-    public GameObject Clone(Vector3 position)
-    {
-        GameObject clone = Instantiate(gameObject, position, Quaternion.identity);
-        return clone;
-    }
-    private void EnemyChasing()
-    {
-        if (Player != null)
+        public bool Targetable { get; }
+        public bool Invincible { get; set; }
+        private void Awake()
         {
-            Vector2 playerPosition = Player.transform.position;
-            transform.position = Vector2.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
+            Player = FindObjectOfType<PlayerController>(); // Ignore this, just testing
         }
-    }
-    public void OnHit(int damage, Vector2 knockback) { }
-    public void OnHit(int damage)
-    {
-        Health -= damage;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Collider2D collider2D = collision.collider;
-        if (collider2D.TryGetComponent(out PlayerController player))
+        private void Update()
         {
-            Vector2 direction = (collider2D.transform.position - transform.position).normalized;
-            Vector2 knockback = direction * _knockbackForce;
-
-            player.OnHit(_hitDamage, knockback);
+            EnemyChasing();
         }
-    }
+        public EnemyController Clone()
+        {
+            EnemyController clone = Instantiate(this);
+            return clone;
+        }
+        public EnemyController Clone(Vector3 position)
+        {
+            EnemyController clone = Instantiate(this, position, Quaternion.identity);
+            return clone;
+        }
+        private void EnemyChasing()
+        {
+            if (Player != null)
+            {
+                Vector2 playerPosition = Player.transform.position;
+                transform.position = Vector2.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
+            }
+        }
+        public void OnHit(int damage, Vector2 knockback) { }
+        public void OnHit(int damage)
+        {
+            Health -= damage;
+        }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            Collider2D collider2D = collision.collider;
+            if (collider2D.TryGetComponent(out PlayerController player))
+            {
+                Vector2 direction = (collider2D.transform.position - transform.position).normalized;
+                Vector2 knockback = direction * _knockbackForce;
 
-    public void OnDeath()
-    {
-        Destroy(gameObject);
+                player.OnHit(_hitDamage, knockback);
+            }
+        }
+
+        public void OnDeath()
+        {
+            Destroy(gameObject);
+        }
     }
 }
