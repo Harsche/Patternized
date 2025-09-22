@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using PrototypePattern.Enemy;
 using PrototypePattern.Player;
 using UnityEngine;
 
@@ -13,8 +14,6 @@ namespace PrototypePattern.Horde
 
         [field: SerializeField] public GameObject EnemyPrefab { get; private set; }
 
-        [SerializeField] private float _speed;
-        [SerializeField] private float _damage;
-        [SerializeField] private int _knockbackForce;
+        [field: SerializeField] public MonsterStatsSO EnemyBaseStats { get; private set; }
     }
 }

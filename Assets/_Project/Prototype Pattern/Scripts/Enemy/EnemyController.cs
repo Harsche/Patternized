@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using PrototypePattern;
 using PrototypePattern.Player;
+using PrototypePattern.Enemy;
 using UnityEngine;
 
 namespace PrototypePattern.Enemy
 {
     public class EnemyController : MonoBehaviour, IDamageable, IPrototype<EnemyController>
     {
+        [Header("Design")]
+        [SerializeField] private MonsterStatsSO _baseStats;
+
+        // Runtime stats (prototype state)
         private float _health;
         private int _hitDamage;
-        private int _speed = 5;
-        public int _knockbackForce;
+        private float _speed = 5f;
+        private int _knockbackForce;
 
-        public PlayerController Player;
+        private PlayerController _player;
 
         public float Health
         {
@@ -30,37 +35,68 @@ namespace PrototypePattern.Enemy
 
         public bool Targetable { get; }
         public bool Invincible { get; set; }
+        public enum StatType { Health, Speed, Damage }
         private void Awake()
         {
-            Player = FindObjectOfType<PlayerController>(); // Ignore this, just testing
+            InitializeFromStats(_baseStats);
         }
+
+        // (Removed explicit SetPlayer usage) Player can be provided during initialization.
+
         private void Update()
         {
             EnemyChasing();
         }
+
+        public void InitializeFromStats(MonsterStatsSO stats, PlayerController player = null)
+        {
+            if (stats == null) return;
+            _health = stats.Health;
+            _speed = stats.Speed;
+            _hitDamage = stats.Damage;
+            _knockbackForce = stats.KnockbackForce;
+            _player = player;
+        }
+
         public EnemyController Clone()
         {
             EnemyController clone = Instantiate(this);
+            clone.CopyRuntimeStatsFrom(this);
+            clone._player = this._player;
             return clone;
         }
+
         public EnemyController Clone(Vector3 position)
         {
             EnemyController clone = Instantiate(this, position, Quaternion.identity);
+            clone.CopyRuntimeStatsFrom(this);
+            clone._player = this._player;
             return clone;
         }
+
+        private void CopyRuntimeStatsFrom(EnemyController prototype)
+        {
+            _health = prototype._health;
+            _speed = prototype._speed;
+            _hitDamage = prototype._hitDamage;
+            _knockbackForce = prototype._knockbackForce;
+        }
+
         private void EnemyChasing()
         {
-            if (Player != null)
+            if (_player != null)
             {
-                Vector2 playerPosition = Player.transform.position;
+                Vector2 playerPosition = _player.transform.position;
                 transform.position = Vector2.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
             }
         }
+
         public void OnHit(int damage, Vector2 knockback) { }
         public void OnHit(int damage)
         {
             Health -= damage;
         }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Collider2D collider2D = collision.collider;
@@ -77,5 +113,16 @@ namespace PrototypePattern.Enemy
         {
             Destroy(gameObject);
         }
+
+        public void ApplyModifier(StatType stat, float amount)
+        {
+            switch (stat)
+            {
+                case StatType.Health: _health += amount; break;
+                case StatType.Speed: _speed += amount; break;
+                case StatType.Damage: _hitDamage = Mathf.Max(0, _hitDamage + Mathf.RoundToInt(amount)); break;
+            }
+        }
     }
+
 }
