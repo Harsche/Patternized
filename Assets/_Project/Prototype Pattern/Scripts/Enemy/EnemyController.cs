@@ -19,7 +19,9 @@ namespace PrototypePattern.Enemy
         private int _knockbackForce;
 
         private PlayerController _player;
-
+        public bool Targetable { get; }
+        public bool Invincible { get; set; }
+        public enum StatType { Health, Speed, Damage }
         public float Health
         {
             get => _health;
@@ -32,16 +34,10 @@ namespace PrototypePattern.Enemy
                 }
             }
         }
-
-        public bool Targetable { get; }
-        public bool Invincible { get; set; }
-        public enum StatType { Health, Speed, Damage }
         private void Awake()
         {
             InitializeFromStats(_baseStats);
         }
-
-        // (Removed explicit SetPlayer usage) Player can be provided during initialization.
 
         private void Update()
         {
@@ -86,8 +82,15 @@ namespace PrototypePattern.Enemy
         {
             if (_player != null)
             {
-                Vector2 playerPosition = _player.transform.position;
-                transform.position = Vector2.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
+                Vector3 playerPosition = _player.transform.position;
+                transform.position = Vector3.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
+
+                Vector3 direction = playerPosition - transform.position;
+                if (direction.sqrMagnitude > 0.0001f)
+                {
+                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+                    transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                }
             }
         }
 

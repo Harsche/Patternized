@@ -15,4 +15,4 @@ MonoBehaviour:
   <Health>k__BackingField: 10
   <Speed>k__BackingField: 5
   <Damage>k__BackingField: 1
-  <KnockbackForce>k__BackingField: 200
+  <KnockbackForce>k__BackingField: 100

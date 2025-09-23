@@ -44,6 +44,9 @@ namespace PrototypePattern.Player.Gun.Bullets
         public virtual void Shoot(Vector3 spawnPosition, Vector3 direction, Transform parent, Transform target = null)
         {
             BulletBase clone = Clone(spawnPosition);
+
+            if (direction != Vector3.zero) clone.transform.up = direction;
+            
             clone.transform.SetParent(parent);
             clone.Move(direction, target);
         }
