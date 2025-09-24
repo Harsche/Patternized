@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using PrototypePattern.Input;
 using UnityEngine;
@@ -11,6 +12,7 @@ namespace PrototypePattern.Player
     {
         [Header("Health Settings")]
         [SerializeField] private float _health;
+        [SerializeField] private float _maxHealth = 100f;
 
         [Header("Knockback Settings")]
         [Range(0f, 1f)]
@@ -19,25 +21,35 @@ namespace PrototypePattern.Player
         [Header("Status Settings")]
         [SerializeField] private bool _targetable = true;
         [SerializeField] private bool _invincible = false;
+        [SerializeField] private bool _canMove = true;
 
         [Header("Components")]
         private Collider2D _physicsCollider;
         private Rigidbody2D _rigidBody2D;
         private InputHandler _inputHandler;
 
+        // Event: passes normalized health (0..1)
+        public event Action<float> OnHealthChanged;
+
         public float Health
         {
             get => _health;
             private set
             {
-                _health = value;
-                if (_health <= 0)
+                _health = Mathf.Clamp(value, 0f, _maxHealth);
+                if (_health <= 0f)
                 {
                     Targetable = false;
                     OnDeath();
                 }
+
+                OnHealthChanged?.Invoke(NormalizedHealth);
             }
         }
+
+        public float NormalizedHealth => Mathf.Approximately(_maxHealth, 0f) ? 0f : Mathf.Clamp01(_health / _maxHealth);
+        public float MaxHealth => _maxHealth;
+
 
         public bool Targetable
         {
@@ -54,8 +66,13 @@ namespace PrototypePattern.Player
             set
             {
                 _invincible = value;
-                _physicsCollider.enabled = !Invincible;
             }
+        }
+
+        public bool CanMove
+        {
+            get => _canMove;
+            private set => _canMove = value;
         }
 
         private void Awake()
@@ -63,6 +80,7 @@ namespace PrototypePattern.Player
             _physicsCollider = GetComponent<Collider2D>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
             _inputHandler = GetComponent<InputHandler>();
+            _canMove = true;
         }
         public void OnHit(int damage, Vector2 knockback)
         {
@@ -72,11 +90,13 @@ namespace PrototypePattern.Player
                 StartCoroutine(ApplyKnockback(knockback, _knockbackDuration));
             }
         }
+
         public void OnHit(int damage)
         {
-            Debug.Log($"Took {damage} damage!");
-            Health -= damage;
+            if (Targetable && !Invincible)
+                Health -= damage;
         }
+
         public void OnDeath()
         {
             Debug.Log("Died!");
@@ -84,10 +104,12 @@ namespace PrototypePattern.Player
         private IEnumerator ApplyKnockback(Vector2 knockback, float duration)
         {
             Invincible = true;
+            CanMove = false;
             _rigidBody2D.AddForce(knockback, ForceMode2D.Impulse);
             StartCoroutine(HitTwinkle(1f));
             yield return new WaitForSeconds(duration);
             Invincible = false;
+            CanMove = true;
         }
         private IEnumerator HitTwinkle(float timer)
         {

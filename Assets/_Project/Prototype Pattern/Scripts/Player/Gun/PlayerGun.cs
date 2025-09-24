@@ -20,9 +20,10 @@ namespace PrototypePattern.Player.Gun
         [SerializeField] private Image _aim;
 
         [Header("Bullet Type")]
-        [SerializeField] private BulletBase _currentBullet;
-        [SerializeField] private NormalBullet _normalBullet;
-        [SerializeField] private FastBullet _fastBullet;
+        [SerializeField] private BulletBase _normalBullet;
+        [SerializeField] private BulletBase _fastBullet;
+        private BulletBase _currentBullet;
+
 
         [Header("Muzzles")]
         [SerializeField] private Transform _singleShotOrigin;
@@ -47,6 +48,7 @@ namespace PrototypePattern.Player.Gun
             _player = GetComponentInParent<PlayerController>();
             _inputHandler = GetComponentInParent<InputHandler>();
 
+            _currentBullet = _normalBullet;
             _currentMagazineSize = _currentBullet.MagazineCapacity;
             _currentAmmo = _currentMagazineSize;
 
@@ -79,24 +81,32 @@ namespace PrototypePattern.Player.Gun
             _player.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
-        public void Shoot()
+        private void Shoot()
         {
-            if (_isReloading) return;                  // não dispara durante recarga
-            if (_currentAmmo <= 0) return;             // sem munição
-            if (Time.time < _nextShootTime) return;    // cooldown
+            if (_isReloading) return;
+            if (_currentAmmo <= 0) return;
+            if (Time.time < _nextShootTime) return;
+
+            if (_dualUntilEmpty || _defaultShotType == ShotType.Dual)
+            {
+                _currentBullet = _fastBullet;
+            }
+            else
+            {
+                _currentBullet = _normalBullet;
+            }
+
+            _currentMagazineSize = _currentBullet.MagazineCapacity;
+            if (_currentAmmo > _currentMagazineSize)
+                _currentAmmo = _currentMagazineSize;
 
             Vector3 spawnPosition = transform.position;
             Vector3 shootDirection = GetMouseDirection();
 
-            switch (activeShot)
-            {
-                case ShotType.Single:
-                    FireSingle(spawnPosition, shootDirection);
-                    break;
-                case ShotType.Dual:
-                    FireDual(spawnPosition, shootDirection);
-                    break;
-            }
+            if (_currentBullet == _normalBullet)
+                FireSingle(spawnPosition, shootDirection);
+            else
+                FireDual(spawnPosition, shootDirection);
 
             _nextShootTime = Time.time + _currentBullet.Cooldown;
             _ammoDisplay.UpdateAmmo(_currentAmmo);
@@ -104,6 +114,7 @@ namespace PrototypePattern.Player.Gun
             if (_currentAmmo <= 0)
                 StartCoroutine(Reload());
         }
+
 
         private ShotType activeShot
         {
@@ -117,13 +128,12 @@ namespace PrototypePattern.Player.Gun
         private void FireSingle(Vector3 spawnPosition, Vector3 shootDirection)
         {
             if (_currentAmmo <= 0) return;
-            _currentBullet.Shoot(spawnPosition, shootDirection, _bulletParent);
-            _currentAmmo -= 1;
 
+            _currentBullet.Shoot(spawnPosition, shootDirection, _bulletParent);
+
+            _currentAmmo--;
             if (_currentAmmo <= 0 && _dualUntilEmpty)
-            {
                 _dualUntilEmpty = false;
-            }
         }
 
         private void FireDual(Vector3 spawnPosition, Vector3 shootDirection)
@@ -141,20 +151,18 @@ namespace PrototypePattern.Player.Gun
                 Transform muzzleLeft = _dualShotContainer.GetChild(0);
                 Transform muzzleRight = _dualShotContainer.GetChild(1);
 
-                Vector3 directionLeft = (muzzleLeft.up == Vector3.zero) ? shootDirection : (muzzleLeft.up);
-                Vector3 directionRight = (muzzleRight.up == Vector3.zero) ? shootDirection : (muzzleRight.up);
+                Vector3 directionLeft = (muzzleLeft.up == Vector3.zero) ? shootDirection : muzzleLeft.up;
+                Vector3 directionRight = (muzzleRight.up == Vector3.zero) ? shootDirection : muzzleRight.up;
 
                 _currentBullet.Shoot(muzzleLeft.position, directionLeft.normalized, _bulletParent);
                 _currentBullet.Shoot(muzzleRight.position, directionRight.normalized, _bulletParent);
             }
 
             _currentAmmo -= 2;
-
             if (_currentAmmo <= 0 && _dualUntilEmpty)
-            {
                 _dualUntilEmpty = false;
-            }
         }
+
 
         public void ActivateDualUntilEmpty()
         {
@@ -183,5 +191,6 @@ namespace PrototypePattern.Player.Gun
 
             _ammoDisplay.UpdateAmmo(_currentAmmo);
         }
+
     }
 }

@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _asteroidData:
     <CurrentColor>k__BackingField: 0
-    <CurrentSize>k__BackingField: 1
+    <CurrentSize>k__BackingField: 0
     <BrownSprites>k__BackingField:
     - {fileID: 21300000, guid: 4315e0e0f64194a428a8cd68bcc76ff1, type: 3}
     - {fileID: 21300000, guid: f6c9bee0b93211d41b50b4087ea5d936, type: 3}
@@ -114,6 +114,10 @@ MonoBehaviour:
     <MaxSpeed>k__BackingField: 2
     <RotationSpeed>k__BackingField: 30
     <DropBaseChance>k__BackingField: 0.1
+  powerupPrefabs:
+  - {fileID: 8347387091382789413, guid: 3089f0f39ad711d46b39fd818124902f, type: 3}
+  - {fileID: 1306431151966221496, guid: 4ecac695644733d48b4386750923100c, type: 3}
+  - {fileID: 2699228496735189041, guid: 40271b7d33d700f47bfc00c88c7a2b63, type: 3}
 --- !u!50 &-4384363955380134949
 Rigidbody2D:
   serializedVersion: 4

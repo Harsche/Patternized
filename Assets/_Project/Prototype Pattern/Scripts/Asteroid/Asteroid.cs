@@ -7,9 +7,9 @@ namespace PrototypePattern.Asteroids
     public class Asteroid : MonoBehaviour
     {
         [SerializeField] private AsteroidData _asteroidData;
-
+        [SerializeField] private GameObject[] powerupPrefabs;
         private Rigidbody2D rigidBody2D;
-
+        private float? forcedDropChance = null;
         void Start()
         {
             rigidBody2D = GetComponent<Rigidbody2D>();
@@ -33,14 +33,17 @@ namespace PrototypePattern.Asteroids
         }
         private void OnDestroyAsteroid()
         {
-            if (_asteroidData == null)
-                return;
+            float chance = forcedDropChance ?? _asteroidData.DropBaseChance;
 
-            float chance = _asteroidData.DropBaseChance;
             if (Random.value < chance)
             {
-                Debug.Log("Drop de powerup!");
+                int index = Random.Range(0, powerupPrefabs.Length);
+                Instantiate(powerupPrefabs[index], transform.position, Quaternion.identity);
             }
+        }
+        public void OverrideDropChance(float chance)
+        {
+            forcedDropChance = Mathf.Clamp01(chance);
         }
     }
 }

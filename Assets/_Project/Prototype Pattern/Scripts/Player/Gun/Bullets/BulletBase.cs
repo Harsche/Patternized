@@ -5,7 +5,7 @@ using UnityEngine;
 namespace PrototypePattern.Player.Gun.Bullets
 {
     [RequireComponent(typeof(Rigidbody2D))]
-    public abstract class BulletBase : MonoBehaviour, IPrototype<BulletBase>
+    public abstract class BulletBase : MonoBehaviour
     {
         [Header("Bullet Settings")]
         [SerializeField] protected int _bulletDamage = 10;
@@ -16,13 +16,11 @@ namespace PrototypePattern.Player.Gun.Bullets
 
         protected Rigidbody2D _rigidBody2D;
 
-        // Bullet properties
         public int BulletDamage => _bulletDamage;
         public float Speed => _speed;
         public float Cooldown => _cooldown;
         public float Lifetime => _lifetime;
         public int MagazineCapacity => _magazineCapacity;
-        public Rigidbody2D Rigidbody2D => _rigidBody2D;
 
         protected virtual void Awake()
         {
@@ -38,17 +36,19 @@ namespace PrototypePattern.Player.Gun.Bullets
 
         public virtual void Shoot(Vector3 spawnPosition, Vector3 direction, Transform parent, Transform target = null)
         {
-            BulletBase clone = Clone(spawnPosition);
+            BulletBase clone = Instantiate(this, spawnPosition, Quaternion.identity);
 
             if (direction != Vector3.zero) clone.transform.up = direction;
 
             clone.transform.SetParent(parent);
+
             clone.Move(direction, target);
         }
 
+
         protected virtual void OnTriggerEnter2D(Collider2D collider2D)
         {
-            if (collider2D.TryGetComponent(out PlayerController player)) return;
+            if (collider2D.TryGetComponent(out PlayerController _)) return;
 
             if (collider2D.TryGetComponent(out EnemyController enemy))
             {
@@ -56,6 +56,7 @@ namespace PrototypePattern.Player.Gun.Bullets
                 OnHitTarget(enemy);
                 Destroy(gameObject);
             }
+
             if (collider2D.TryGetComponent(out Asteroid asteroid))
             {
                 asteroid.OnBulletHit();
@@ -67,32 +68,5 @@ namespace PrototypePattern.Player.Gun.Bullets
         {
             Destroy(gameObject);
         }
-
-        #region IPrototype Implementation
-
-        public virtual BulletBase Clone()
-        {
-            BulletBase clone = Instantiate(this);
-            CopyBulletProperties(clone);
-            return clone;
-        }
-
-        public virtual BulletBase Clone(Vector3 position)
-        {
-            BulletBase clone = Instantiate(this, position, Quaternion.identity);
-            CopyBulletProperties(clone);
-            return clone;
-        }
-
-        protected virtual void CopyBulletProperties(BulletBase target)
-        {
-            target._bulletDamage = _bulletDamage;
-            target._speed = _speed;
-            target._cooldown = _cooldown;
-            target._lifetime = _lifetime;
-            target._magazineCapacity = _magazineCapacity;
-        }
-
-        #endregion
     }
 }

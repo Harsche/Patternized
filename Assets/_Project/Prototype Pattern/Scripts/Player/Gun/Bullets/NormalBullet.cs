@@ -6,7 +6,7 @@ namespace PrototypePattern.Player.Gun.Bullets
     {
         protected override void Move(Vector3 direction, Transform target = null)
         {
-            Rigidbody2D.velocity = direction * Speed;
+            _rigidBody2D.velocity = direction * Speed;
         }
     }
 }

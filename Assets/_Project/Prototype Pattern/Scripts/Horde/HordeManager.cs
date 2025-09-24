@@ -27,7 +27,6 @@ namespace PrototypePattern.Horde
             StartCoroutine(StartWaveCoroutine(_currentWave));
         }
 
-        /// <summary>Starts the coroutine to run the wave with the given index.</summary>
         private IEnumerator StartWaveCoroutine(int waveIndex)
         {
             if (waveIndex >= _hordeLevels.Count)
@@ -77,6 +76,10 @@ namespace PrototypePattern.Horde
                 elapsed++;
             }
 
+            // finished spawning for this wave — now wait until all spawned enemies are dead
+            yield return StartCoroutine(WaitForAllEnemiesDead());
+
+            // apply a random modification to the prototype for next wave
             ApplyRandomModificationToPrototype();
 
             _currentWave++;
@@ -121,6 +124,40 @@ namespace PrototypePattern.Horde
             }
 
             _prototype.ApplyModifier(chosen, modifier);
+        }
+
+        private IEnumerator WaitForAllEnemiesDead()
+        {
+            const float pollInterval = 0.5f;
+
+            while (true)
+            {
+                bool anyAlive = false;
+
+                if (_hordeParent != null && _hordeParent.childCount > 0)
+                {
+                    for (int i = 0; i < _hordeParent.childCount; i++)
+                    {
+                        Transform child = _hordeParent.GetChild(i);
+                        if (child == null) continue;
+
+                        EnemyController enemyController = child.GetComponent<EnemyController>();
+                        if (enemyController != null && child.gameObject.activeInHierarchy)
+                        {
+                            anyAlive = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!anyAlive)
+                {
+                    _hordeMessageUI.ShowMessage("WAVE CLEARED!", 2f);
+                    yield break;
+                }
+
+                yield return new WaitForSeconds(pollInterval);
+            }
         }
 
         /// <summary>Calculates and returns a random spawn position outside the screen relative to the player.</summary>

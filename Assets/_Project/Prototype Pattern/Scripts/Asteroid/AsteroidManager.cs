@@ -10,6 +10,10 @@ namespace PrototypePattern.Asteroids
         [SerializeField] private Transform _asteroidParent;
         public int asteroidCount = 20;
 
+        [Header("Powerup Debug Settings")]
+        [Range(0f, 1f)]
+        [SerializeField] private float dropChanceOverride = -1f; 
+
         void Start()
         {
             SpawnAsteroids();
@@ -39,7 +43,12 @@ namespace PrototypePattern.Asteroids
                     GameObject asteroid = Instantiate(prefab, spawnPos, Quaternion.identity);
                     asteroid.transform.SetParent(_asteroidParent);
 
+                    // aplica override de chance se estiver ativado
                     Asteroid asteroidScript = asteroid.GetComponent<Asteroid>();
+                    if (asteroidScript != null && dropChanceOverride >= 0f)
+                    {
+                        asteroidScript.OverrideDropChance(dropChanceOverride);
+                    }
 
                     spawned++;
                 }
