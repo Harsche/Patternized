@@ -1,41 +1,62 @@
 using System;
 using UnityEngine;
 
-[Serializable]
-public class AsteroidData
+namespace PrototypePattern.Asteroids
 {
-    [field: SerializeField] public Sprite[] Tiny { get; private set; }
-    [field: SerializeField] public Sprite[] Small { get; private set; }
-    [field: SerializeField] public Sprite[] Medium { get; private set; }
-    [field: SerializeField] public Sprite[] Large { get; private set; }
-    [field: SerializeField] public Sprite[] Huge { get; private set; }
-    [field: SerializeField] public Sprite[] Giant { get; private set; }
-    [field: SerializeField] public Sprite[] Massive { get; private set; }
-    [field: SerializeField] public Sprite[] Titanic { get; private set; }
-    [field: SerializeField] public Sprite[] Colossal { get; private set; }
-    [field: SerializeField] public Sprite[] Mythic { get; private set; }
-
-    [field: SerializeField] public float MinSpeed { get; private set; } = 0.5f;
-    [field: SerializeField] public float MaxSpeed { get; private set; } = 2f;
-    [field: SerializeField] public float RotationSpeed { get; private set; } = 30f;
-
-    [field: SerializeField, Range(0f, 1f)] public float DropBaseChance { get; private set; } = 0.1f;
-
-    public Sprite[] GetSpriteArray(int index)
+    [Serializable]
+    public class AsteroidData
     {
-        switch (index)
+        public enum AsteroidColor { None = 0, Brown, Grey }
+        public enum AsteroidSize { Tiny = 0, Small, Medium, Big }
+        [field: SerializeField] public AsteroidColor CurrentColor { get; private set; } = AsteroidColor.None;
+        [field: SerializeField] public AsteroidSize CurrentSize { get; private set; } = AsteroidSize.Tiny;
+
+        [field: SerializeField, Header("Sprites")] public Sprite[] BrownSprites { get; private set; }
+        [field: SerializeField] public Sprite[] GreySprites { get; private set; }
+
+        [Header("Effects")]
+        [SerializeField] private GameObject _brownDestructionEffect;
+        [SerializeField] private GameObject _grayDestructionEffect;
+
+        [field: SerializeField, Header("Properties")] public float MinSpeed { get; private set; } = 0.5f;
+        [field: SerializeField] public float MaxSpeed { get; private set; } = 2f;
+        [field: SerializeField] public float RotationSpeed { get; private set; } = 30f;
+
+        [field: SerializeField, Range(0f, 1f)] public float DropBaseChance { get; private set; } = 0.1f;
+
+        public Sprite GetRandomSprite()
         {
-            case 0: return Tiny;
-            case 1: return Small;
-            case 2: return Medium;
-            case 3: return Large;
-            case 4: return Huge;
-            case 5: return Giant;
-            case 6: return Massive;
-            case 7: return Titanic;
-            case 8: return Colossal;
-            case 9: return Mythic;
-            default: return Tiny;
+            Sprite[] sprites;
+            if (UnityEngine.Random.value < 0.5f)
+            {
+                sprites = BrownSprites;
+                CurrentColor = AsteroidColor.Brown;
+            }
+            else
+            {
+                sprites = GreySprites;
+                CurrentColor = AsteroidColor.Grey;
+            }
+            return sprites[UnityEngine.Random.Range(0, sprites.Length)];
+        }
+        public GameObject HandleFX()
+        {
+            GameObject effect = CurrentColor == AsteroidColor.Brown ? _brownDestructionEffect : _grayDestructionEffect;
+            ChangeSize(effect);
+            return effect;
+        }
+        public void ChangeSize(GameObject gameObject)
+        {
+            float scale = 1f;
+            switch (CurrentSize)
+            {
+                case AsteroidSize.Tiny: scale = 0.25f; break;
+                case AsteroidSize.Small: scale = 0.50f; break;
+                case AsteroidSize.Medium: scale = 0.75f; break;
+                case AsteroidSize.Big: scale = 1f; break;
+            }
+
+            gameObject.transform.localScale = Vector3.one * scale;
         }
     }
 }

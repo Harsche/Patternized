@@ -1,13 +1,12 @@
 using UnityEngine;
 
-namespace PrototypePattern.Asteroid
+namespace PrototypePattern.Asteroids
 {
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Rigidbody2D))]
     public class Asteroid : MonoBehaviour
     {
         [SerializeField] private AsteroidData _asteroidData;
-        [HideInInspector] public int tamanhoIndex;
 
         private Rigidbody2D rigidBody2D;
 
@@ -16,9 +15,8 @@ namespace PrototypePattern.Asteroid
             rigidBody2D = GetComponent<Rigidbody2D>();
 
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            Sprite[] pool = _asteroidData.GetSpriteArray(tamanhoIndex);
-
-            spriteRenderer.sprite = pool[Random.Range(0, pool.Length)];
+            Sprite sprite = _asteroidData.GetRandomSprite();
+            spriteRenderer.sprite = sprite;
 
             Vector2 direction = Random.insideUnitCircle.normalized;
             float speed = Random.Range(_asteroidData.MinSpeed, _asteroidData.MaxSpeed);
@@ -26,10 +24,19 @@ namespace PrototypePattern.Asteroid
 
             rigidBody2D.angularVelocity = Random.Range(-_asteroidData.RotationSpeed, _asteroidData.RotationSpeed);
         }
-
-        public void OnDestroyAsteroid()
+        public void OnBulletHit()
         {
-            float chance = _asteroidData.DropBaseChance * (tamanhoIndex + 1);
+            OnDestroyAsteroid();
+            GameObject asteroidFX = Instantiate(_asteroidData.HandleFX(), transform.position, Quaternion.identity);
+            Destroy(asteroidFX, 2f);
+            Destroy(gameObject);
+        }
+        private void OnDestroyAsteroid()
+        {
+            if (_asteroidData == null)
+                return;
+
+            float chance = _asteroidData.DropBaseChance;
             if (Random.value < chance)
             {
                 Debug.Log("Drop de powerup!");

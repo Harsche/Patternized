@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace PrototypePattern.Asteroid
+namespace PrototypePattern.Asteroids
 {
     public class AsteroidManager : MonoBehaviour
     {
         [SerializeField] private Tilemap _spaceTilemap;
-        [SerializeField] private GameObject _asteroidPrefab;
+        [SerializeField] private GameObject[] _asteroidPrefabs;
         [SerializeField] private Transform _asteroidParent;
         public int asteroidCount = 20;
 
@@ -35,11 +35,11 @@ namespace PrototypePattern.Asteroid
                 {
                     Vector3 spawnPos = _spaceTilemap.CellToWorld(cellPos) + _spaceTilemap.cellSize / 2;
 
-                    GameObject asteroid = Instantiate(_asteroidPrefab, spawnPos, Quaternion.identity);
+                    GameObject prefab = _asteroidPrefabs[Random.Range(0, _asteroidPrefabs.Length)];
+                    GameObject asteroid = Instantiate(prefab, spawnPos, Quaternion.identity);
                     asteroid.transform.SetParent(_asteroidParent);
 
                     Asteroid asteroidScript = asteroid.GetComponent<Asteroid>();
-                    asteroidScript.tamanhoIndex = Random.Range(0, 10);
 
                     spawned++;
                 }

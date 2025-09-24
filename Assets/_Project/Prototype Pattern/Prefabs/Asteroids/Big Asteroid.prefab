@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -4384363955380134949}
   - component: {fileID: 8120463387142630065}
   m_Layer: 0
-  m_Name: Asteroid
+  m_Name: Big Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,41 +100,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _asteroidData:
-    <Tiny>k__BackingField:
-    - {fileID: 21300000, guid: 2fd003c0f8f928f46a5afd2d18c6ef7b, type: 3}
-    - {fileID: 21300000, guid: fa20ec67aa34b504a889b5dc257e5458, type: 3}
-    <Small>k__BackingField:
-    - {fileID: 21300000, guid: 6a4dda5f071a42542881e364d190787a, type: 3}
-    - {fileID: 21300000, guid: 289741a3b2ba65d4a85e75d76bf88a03, type: 3}
-    <Medium>k__BackingField:
-    - {fileID: 21300000, guid: a6ea1505d8d5a3749a18aaa980592308, type: 3}
-    - {fileID: 21300000, guid: f6c9bee0b93211d41b50b4087ea5d936, type: 3}
-    <Large>k__BackingField:
-    - {fileID: 21300000, guid: c95ed7722a437b341a4541f0c2b5596a, type: 3}
-    - {fileID: 21300000, guid: 4315e0e0f64194a428a8cd68bcc76ff1, type: 3}
-    <Huge>k__BackingField:
-    - {fileID: 21300000, guid: 2a33646b27255cf40b1136805b49823b, type: 3}
-    - {fileID: 21300000, guid: 833363d1460beb64bb0c11c24082da34, type: 3}
-    <Giant>k__BackingField:
-    - {fileID: 21300000, guid: 8265e10c4e1b3424391707c18daa320e, type: 3}
-    - {fileID: 21300000, guid: 26791832fcc4b9c4a935283c7855b1b5, type: 3}
-    <Massive>k__BackingField:
-    - {fileID: 21300000, guid: 1fd1e9c2583673f4bb228204a1b67916, type: 3}
-    - {fileID: 21300000, guid: 2bde5d90393172b49aea635aa3ebfa3e, type: 3}
-    <Titanic>k__BackingField:
-    - {fileID: 21300000, guid: 9f05c6d9b9997c34dbc57fac12c4b6cc, type: 3}
-    - {fileID: 21300000, guid: e56a47cdcb57dcd458a16d5831faf255, type: 3}
-    <Colossal>k__BackingField:
-    - {fileID: 21300000, guid: d243a6320dc51c44ebc3d7f135849ff2, type: 3}
-    - {fileID: 21300000, guid: 8a3f3122ef7f72c4da8416c259f0c2dd, type: 3}
-    <Mythic>k__BackingField:
+    <CurrentColor>k__BackingField: 0
+    <CurrentSize>k__BackingField: 3
+    <BrownSprites>k__BackingField:
     - {fileID: 21300000, guid: 4fe6204fa29b6b047a0572363db9b27d, type: 3}
+    - {fileID: 21300000, guid: 8a3f3122ef7f72c4da8416c259f0c2dd, type: 3}
+    - {fileID: 21300000, guid: e56a47cdcb57dcd458a16d5831faf255, type: 3}
+    - {fileID: 21300000, guid: 2bde5d90393172b49aea635aa3ebfa3e, type: 3}
+    <GreySprites>k__BackingField:
     - {fileID: 21300000, guid: 4609dfa3a50d2a64d87504a22d3f9d6f, type: 3}
+    - {fileID: 21300000, guid: d243a6320dc51c44ebc3d7f135849ff2, type: 3}
+    - {fileID: 21300000, guid: 9f05c6d9b9997c34dbc57fac12c4b6cc, type: 3}
+    - {fileID: 21300000, guid: 1fd1e9c2583673f4bb228204a1b67916, type: 3}
+    _brownDestructionEffect: {fileID: 376742046220352172, guid: 454d36f2c5c5ab6499e355676894136b, type: 3}
+    _grayDestructionEffect: {fileID: 7492223514726668704, guid: 2dfa22abd3ce12f4b9f65079c7f54a7c, type: 3}
     <MinSpeed>k__BackingField: 0.5
     <MaxSpeed>k__BackingField: 2
     <RotationSpeed>k__BackingField: 30
     <DropBaseChance>k__BackingField: 0.1
-  tamanhoIndex: 0
 --- !u!50 &-4384363955380134949
 Rigidbody2D:
   serializedVersion: 4
@@ -191,7 +174,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

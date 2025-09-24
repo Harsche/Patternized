@@ -307,7 +307,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &187957472
 GameObject:
@@ -590,9 +590,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spaceTilemap: {fileID: 490394524}
-  _asteroidPrefab: {fileID: 2969546730348731699, guid: e3ef23e9b65718641a3c9b74dd47e2fe, type: 3}
+  _asteroidPrefabs:
+  - {fileID: 2969546730348731699, guid: e3ef23e9b65718641a3c9b74dd47e2fe, type: 3}
+  - {fileID: 2969546730348731699, guid: 6ad8a99e3ab3da8408c16812971f424d, type: 3}
+  - {fileID: 2969546730348731699, guid: f4eb461ef38bf264889d61a41f926b63, type: 3}
+  - {fileID: 2969546730348731699, guid: f11344270e4ec0a4a8790803e0035baa, type: 3}
   _asteroidParent: {fileID: 1226507772}
-  asteroidCount: 20
+  asteroidCount: 50
 --- !u!1 &357700632
 GameObject:
   m_ObjectHideFlags: 0
@@ -84616,7 +84620,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_BackGroundColor: {r: 0.227451, g: 0.18039216, b: 0.24705884, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

@@ -1,14 +1,9 @@
-using PrototypePattern;
 using PrototypePattern.Enemy;
-using PrototypePattern.Player;
+using PrototypePattern.Asteroids;
 using UnityEngine;
 
 namespace PrototypePattern.Player.Gun.Bullets
 {
-    /// <summary>
-    /// Abstract base class for all bullet types.
-    /// Implements common bullet behavior and properties.
-    /// </summary>
     [RequireComponent(typeof(Rigidbody2D))]
     public abstract class BulletBase : MonoBehaviour, IPrototype<BulletBase>
     {
@@ -18,7 +13,7 @@ namespace PrototypePattern.Player.Gun.Bullets
         [SerializeField] protected float _cooldown = 0.5f;
         [SerializeField] protected float _lifetime = 5f;
         [SerializeField] protected int _magazineCapacity = 6;
-        
+
         protected Rigidbody2D _rigidBody2D;
 
         // Bullet properties
@@ -46,7 +41,7 @@ namespace PrototypePattern.Player.Gun.Bullets
             BulletBase clone = Clone(spawnPosition);
 
             if (direction != Vector3.zero) clone.transform.up = direction;
-            
+
             clone.transform.SetParent(parent);
             clone.Move(direction, target);
         }
@@ -59,6 +54,12 @@ namespace PrototypePattern.Player.Gun.Bullets
             {
                 enemy.OnHit(_bulletDamage);
                 OnHitTarget(enemy);
+                Destroy(gameObject);
+            }
+            if (collider2D.TryGetComponent(out Asteroid asteroid))
+            {
+                asteroid.OnBulletHit();
+                Destroy(gameObject);
             }
         }
 

@@ -18,6 +18,8 @@ namespace PrototypePattern.Enemy
         private float _speed = 5f;
         private int _knockbackForce;
 
+        [SerializeField] private GameObject _enemyDestructionFX;
+
         private PlayerController _player;
         public bool Targetable { get; }
         public bool Invincible { get; set; }
@@ -114,6 +116,8 @@ namespace PrototypePattern.Enemy
 
         public void OnDeath()
         {
+            GameObject enemyFXPrefab = Instantiate(_enemyDestructionFX, transform.position, Quaternion.identity);
+            Destroy(enemyFXPrefab, 2f);
             Destroy(gameObject);
         }
 
