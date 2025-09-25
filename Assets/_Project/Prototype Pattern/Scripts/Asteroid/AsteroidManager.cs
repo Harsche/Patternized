@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using PrototypePattern.Asteroids;
 
 namespace PrototypePattern.Asteroids
 {
@@ -11,11 +12,20 @@ namespace PrototypePattern.Asteroids
         public int asteroidCount = 20;
 
         [Header("Powerup Debug Settings")]
-        [Range(0f, 1f)]
-        [SerializeField] private float dropChanceOverride = -1f; 
+        [Range(-1f, 1f)]
+        [SerializeField] private float dropChanceOverride = -1f;
+
+        private Asteroid[] _prototypes;
 
         void Start()
         {
+            _prototypes = new Asteroid[_asteroidPrefabs.Length];
+            for (int i = 0; i < _asteroidPrefabs.Length; i++)
+            {
+                GameObject protoObj = Instantiate(_asteroidPrefabs[i], Vector3.zero, Quaternion.identity, _asteroidParent);
+                protoObj.SetActive(false);
+                _prototypes[i] = protoObj.GetComponent<Asteroid>();
+            }
             SpawnAsteroids();
         }
 
@@ -39,15 +49,13 @@ namespace PrototypePattern.Asteroids
                 {
                     Vector3 spawnPos = _spaceTilemap.CellToWorld(cellPos) + _spaceTilemap.cellSize / 2;
 
-                    GameObject prefab = _asteroidPrefabs[Random.Range(0, _asteroidPrefabs.Length)];
-                    GameObject asteroid = Instantiate(prefab, spawnPos, Quaternion.identity);
+                    int protoIdx = Random.Range(0, _prototypes.Length);
+                    Asteroid asteroid = _prototypes[protoIdx].Clone(spawnPos);
                     asteroid.transform.SetParent(_asteroidParent);
 
-                    // aplica override de chance se estiver ativado
-                    Asteroid asteroidScript = asteroid.GetComponent<Asteroid>();
-                    if (asteroidScript != null && dropChanceOverride >= 0f)
+                    if (dropChanceOverride >= 0f)
                     {
-                        asteroidScript.OverrideDropChance(dropChanceOverride);
+                        asteroid.OverrideDropChance(dropChanceOverride);
                     }
 
                     spawned++;

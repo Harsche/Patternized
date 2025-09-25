@@ -4,26 +4,26 @@ using PrototypePattern;
 using PrototypePattern.Player;
 using PrototypePattern.Enemy;
 using UnityEngine;
+using PrototypePattern.Horde;
 
 namespace PrototypePattern.Enemy
 {
+    [RequireComponent(typeof(SpriteRenderer))]
     public class EnemyController : MonoBehaviour, IDamageable, IPrototype<EnemyController>
     {
-        [Header("Design")]
+        public delegate void EnemyDeathHandler();
         [SerializeField] private MonsterStatsSO _baseStats;
 
-        // Runtime stats (prototype state)
         private float _health;
         private int _hitDamage;
         private float _speed = 5f;
         private int _knockbackForce;
 
         [SerializeField] private GameObject _enemyDestructionFX;
-
         private PlayerController _player;
+
         public bool Targetable { get; }
         public bool Invincible { get; set; }
-        public enum StatType { Health, Speed, Damage }
         public float Health
         {
             get => _health;
@@ -36,11 +36,12 @@ namespace PrototypePattern.Enemy
                 }
             }
         }
+        public event EnemyDeathHandler OnDeathEvent;
+        public enum StatType { Health, Speed, Damage }
         private void Awake()
         {
             InitializeFromStats(_baseStats);
         }
-
         private void Update()
         {
             EnemyChasing();
@@ -55,7 +56,6 @@ namespace PrototypePattern.Enemy
             _knockbackForce = stats.KnockbackForce;
             _player = player;
         }
-
         public EnemyController Clone()
         {
             EnemyController clone = Instantiate(this);
@@ -63,7 +63,6 @@ namespace PrototypePattern.Enemy
             clone._player = this._player;
             return clone;
         }
-
         public EnemyController Clone(Vector3 position)
         {
             EnemyController clone = Instantiate(this, position, Quaternion.identity);
@@ -71,7 +70,6 @@ namespace PrototypePattern.Enemy
             clone._player = this._player;
             return clone;
         }
-
         private void CopyRuntimeStatsFrom(EnemyController prototype)
         {
             _health = prototype._health;
@@ -79,14 +77,12 @@ namespace PrototypePattern.Enemy
             _hitDamage = prototype._hitDamage;
             _knockbackForce = prototype._knockbackForce;
         }
-
         private void EnemyChasing()
         {
             if (_player != null)
             {
                 Vector3 playerPosition = _player.transform.position;
                 transform.position = Vector3.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
-
                 Vector3 direction = playerPosition - transform.position;
                 if (direction.sqrMagnitude > 0.0001f)
                 {
@@ -95,13 +91,11 @@ namespace PrototypePattern.Enemy
                 }
             }
         }
-
         public void OnHit(int damage, Vector2 knockback) { }
         public void OnHit(int damage)
         {
             Health -= damage;
         }
-
         private void OnCollisionEnter2D(Collision2D collision)
         {
             Collider2D collider2D = collision.collider;
@@ -109,27 +103,24 @@ namespace PrototypePattern.Enemy
             {
                 Vector2 direction = (collider2D.transform.position - transform.position).normalized;
                 Vector2 knockback = direction * _knockbackForce;
-
                 player.OnHit(_hitDamage, knockback);
             }
         }
-
         public void OnDeath()
         {
+            OnDeathEvent?.Invoke();
             GameObject enemyFXPrefab = Instantiate(_enemyDestructionFX, transform.position, Quaternion.identity);
             Destroy(enemyFXPrefab, 2f);
             Destroy(gameObject);
         }
-
         public void ApplyModifier(StatType stat, float amount)
         {
             switch (stat)
             {
                 case StatType.Health: _health += amount; break;
                 case StatType.Speed: _speed += amount; break;
-                case StatType.Damage: _hitDamage = Mathf.Max(0, _hitDamage + Mathf.RoundToInt(amount)); break;
+                case StatType.Damage: _hitDamage = Mathf.RoundToInt(_hitDamage + amount); break;
             }
         }
     }
-
 }

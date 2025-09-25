@@ -10,6 +10,7 @@ namespace PrototypePattern.Player
     [RequireComponent(typeof(InputHandler))]
     public class PlayerController : MonoBehaviour, IDamageable
     {
+        private Color? _originalColor = null;
         [Header("Health Settings")]
         [SerializeField] private float _health;
         [SerializeField] private float _maxHealth = 100f;
@@ -28,8 +29,11 @@ namespace PrototypePattern.Player
         private Rigidbody2D _rigidBody2D;
         private InputHandler _inputHandler;
 
-        // Event: passes normalized health (0..1)
         public event Action<float> OnHealthChanged;
+        private Coroutine _twinkleCoroutine;
+
+        [SerializeField] private GameObject _shield;
+        [SerializeField] private GameManager _gameManager;
 
         public float Health
         {
@@ -66,6 +70,7 @@ namespace PrototypePattern.Player
             set
             {
                 _invincible = value;
+                _shield.SetActive(_invincible);
             }
         }
 
@@ -99,32 +104,40 @@ namespace PrototypePattern.Player
 
         public void OnDeath()
         {
+            _gameManager.ShowGameOver();
             Debug.Log("Died!");
         }
+
         private IEnumerator ApplyKnockback(Vector2 knockback, float duration)
         {
             Invincible = true;
             CanMove = false;
             _rigidBody2D.AddForce(knockback, ForceMode2D.Impulse);
-            StartCoroutine(HitTwinkle(1f));
+            if (_twinkleCoroutine != null)
+            {
+                StopCoroutine(_twinkleCoroutine);
+            }
+            _twinkleCoroutine = StartCoroutine(HitTwinkle(1f));
             yield return new WaitForSeconds(duration);
             Invincible = false;
             CanMove = true;
         }
+
         private IEnumerator HitTwinkle(float timer)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            Color originalColor = spriteRenderer.color;
+            _originalColor = spriteRenderer.color;
             float elapsedTime = 0f;
 
             while (elapsedTime <= timer)
             {
-                spriteRenderer.color = Color.Lerp(originalColor, Color.red, Mathf.PingPong(Time.time * 5f, 1f));
+                spriteRenderer.color = Color.Lerp(_originalColor.Value, Color.red, Mathf.PingPong(Time.time * 5f, 1f));
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
-            spriteRenderer.color = originalColor;
+            spriteRenderer.color = _originalColor.Value;
+            _twinkleCoroutine = null;
         }
 
     }

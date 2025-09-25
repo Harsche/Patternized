@@ -42,6 +42,14 @@ namespace PrototypePattern.Player.Gun
         private bool _isReloading;
         private float _nextShootTime;
         private bool _dualUntilEmpty = false;
+        private ShotType activeShot
+        {
+            get
+            {
+                if (_dualUntilEmpty) return ShotType.Dual;
+                return _defaultShotType;
+            }
+        }
 
         private void Awake()
         {
@@ -115,16 +123,6 @@ namespace PrototypePattern.Player.Gun
                 StartCoroutine(Reload());
         }
 
-
-        private ShotType activeShot
-        {
-            get
-            {
-                if (_dualUntilEmpty) return ShotType.Dual;
-                return _defaultShotType;
-            }
-        }
-
         private void FireSingle(Vector3 spawnPosition, Vector3 shootDirection)
         {
             if (_currentAmmo <= 0) return;
@@ -167,6 +165,12 @@ namespace PrototypePattern.Player.Gun
         public void ActivateDualUntilEmpty()
         {
             _dualUntilEmpty = true;
+            _currentBullet = _fastBullet;
+            _currentMagazineSize = _currentBullet.MagazineCapacity;
+
+            _currentAmmo = _currentMagazineSize;
+
+            _ammoDisplay = new AmmoDisplay(_currentMagazineSize, _ammoText, _currentAmmo);
         }
 
         private Vector3 GetMouseDirection()

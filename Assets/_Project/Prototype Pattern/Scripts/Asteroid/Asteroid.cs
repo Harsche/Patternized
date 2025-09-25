@@ -4,8 +4,19 @@ namespace PrototypePattern.Asteroids
 {
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Rigidbody2D))]
-    public class Asteroid : MonoBehaviour
+    public class Asteroid : MonoBehaviour, IPrototype<Asteroid>
     {
+        public Asteroid Clone()
+        {
+            return Clone(transform.position);
+        }
+
+        public Asteroid Clone(Vector3 position)
+        {
+            Asteroid clone = Instantiate(this, position, Quaternion.identity, transform.parent);
+            clone.gameObject.SetActive(true);
+            return clone;
+        }
         [SerializeField] private AsteroidData _asteroidData;
         [SerializeField] private GameObject[] powerupPrefabs;
         private Rigidbody2D rigidBody2D;
