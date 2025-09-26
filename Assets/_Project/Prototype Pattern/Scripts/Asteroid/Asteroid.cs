@@ -1,3 +1,4 @@
+using PrototypePattern.Powerups;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -5,13 +6,19 @@ namespace PrototypePattern.Asteroids
 {
     [RequireComponent(typeof(SpriteRenderer))]
     [RequireComponent(typeof(Rigidbody2D))]
+    [RequireComponent(typeof(PowerupDropper))]
     public class Asteroid : MonoBehaviour, IPrototype<Asteroid>
     {
+        [Header("Asteroid Data")]
         [SerializeField] private AsteroidData _asteroidData;
-        [SerializeField] private GameObject[] powerupPrefabs;
+
+        [Header("References")]
         private TilemapCollider2D _limitsTilemap;
-        private Rigidbody2D rigidBody2D;
-        private float? forcedDropChance = null;
+        private Rigidbody2D _rigidBody2D;
+        private SpriteRenderer _spriteRenderer;
+        private PowerupDropper _powerupDropper;
+
+        [Header("Bounce Settings")]
         private bool _shouldBounce = false;
         private Vector2 _bounceNormal;
 
@@ -26,54 +33,47 @@ namespace PrototypePattern.Asteroids
             clone.gameObject.SetActive(true);
             return clone;
         }
-
-        void Start()
+        private void Awake()
         {
-            rigidBody2D = GetComponent<Rigidbody2D>();
+            _rigidBody2D = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _powerupDropper = GetComponent<PowerupDropper>();
+        }
 
-            SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        private void Start()
+        {
+
             Sprite sprite = _asteroidData.GetRandomSprite();
-            spriteRenderer.sprite = sprite;
+            _spriteRenderer.sprite = sprite;
 
             Vector2 direction = Random.insideUnitCircle.normalized;
             float speed = Random.Range(_asteroidData.MinSpeed, _asteroidData.MaxSpeed);
-            rigidBody2D.velocity = direction * speed;
+            _rigidBody2D.velocity = direction * speed;
 
-            rigidBody2D.angularVelocity = Random.Range(-_asteroidData.RotationSpeed, _asteroidData.RotationSpeed);
+            _rigidBody2D.angularVelocity = Random.Range(-_asteroidData.RotationSpeed, _asteroidData.RotationSpeed);
         }
         private void Update()
         {
             if (_shouldBounce)
             {
-                Vector2 bounce = Vector2.Reflect(rigidBody2D.velocity, _bounceNormal);
-                rigidBody2D.MovePosition(rigidBody2D.position + _bounceNormal * 0.5f);
-                rigidBody2D.velocity = bounce * 1.5f;
-                _shouldBounce = false;
+                BounceAsteroid();
             }
+        }
+        private void BounceAsteroid()
+        {
+            Vector2 bounce = Vector2.Reflect(_rigidBody2D.velocity, _bounceNormal);
+            _rigidBody2D.MovePosition(_rigidBody2D.position + _bounceNormal * 0.5f);
+            _rigidBody2D.velocity = bounce * 1.5f;
+            _shouldBounce = false;
         }
         public void OnBulletHit()
         {
-            OnDestroyAsteroid();
             GameObject asteroidFX = Instantiate(_asteroidData.HandleFX(), transform.position, Quaternion.identity);
+            _powerupDropper.TryDropPowerup();
             Destroy(asteroidFX, 2f);
             Destroy(gameObject);
         }
 
-        private void OnDestroyAsteroid()
-        {
-            float chance = forcedDropChance ?? _asteroidData.DropBaseChance;
-
-            if (Random.value < chance)
-            {
-                int index = Random.Range(0, powerupPrefabs.Length);
-                Instantiate(powerupPrefabs[index], transform.position, Quaternion.identity);
-            }
-        }
-
-        public void OverrideDropChance(float chance)
-        {
-            forcedDropChance = Mathf.Clamp01(chance);
-        }
         public void SetLimitTilemap(TilemapCollider2D tilemapCollider2D) => _limitsTilemap = tilemapCollider2D;
 
         private void OnCollisionEnter2D(Collision2D collision)

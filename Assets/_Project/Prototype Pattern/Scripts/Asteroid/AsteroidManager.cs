@@ -12,13 +12,9 @@ namespace PrototypePattern.Asteroids
         [SerializeField] private Transform _asteroidParent;
         public int asteroidCount = 20;
 
-        [Header("Powerup Debug Settings")]
-        [Range(-1f, 1f)]
-        [SerializeField] private float dropChanceOverride = -1f;
-
         private Asteroid[] _prototypes;
 
-        void Start()
+        private void Start()
         {
             _prototypes = new Asteroid[_asteroidPrefabs.Length];
             for (int i = 0; i < _asteroidPrefabs.Length; i++)
@@ -55,11 +51,6 @@ namespace PrototypePattern.Asteroids
                     asteroid.transform.SetParent(_asteroidParent);
 
                     asteroid.SetLimitTilemap(_limitTilemap);
-
-                    if (dropChanceOverride >= 0f)
-                    {
-                        asteroid.OverrideDropChance(dropChanceOverride);
-                    }
 
                     spawned++;
                 }

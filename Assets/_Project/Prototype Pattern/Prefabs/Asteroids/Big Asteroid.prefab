@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7857805909961350588}
   - component: {fileID: -4384363955380134949}
   - component: {fileID: 8120463387142630065}
+  - component: {fileID: 3760250221425929051}
   m_Layer: 0
   m_Name: Big Asteroid
   m_TagString: Untagged
@@ -118,10 +119,6 @@ MonoBehaviour:
     <MaxSpeed>k__BackingField: 2
     <RotationSpeed>k__BackingField: 30
     <DropBaseChance>k__BackingField: 0.1
-  powerupPrefabs:
-  - {fileID: 8347387091382789413, guid: 3089f0f39ad711d46b39fd818124902f, type: 3}
-  - {fileID: 1306431151966221496, guid: 4ecac695644733d48b4386750923100c, type: 3}
-  - {fileID: 2699228496735189041, guid: 40271b7d33d700f47bfc00c88c7a2b63, type: 3}
 --- !u!50 &-4384363955380134949
 Rigidbody2D:
   serializedVersion: 4
@@ -194,3 +191,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.01, y: 0.84}
   m_EdgeRadius: 0
+--- !u!114 &3760250221425929051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2969546730348731699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abf2bc38b75529e4c9a25018dcf5c79b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerupPrefabs:
+  - {fileID: 8347387091382789413, guid: 3089f0f39ad711d46b39fd818124902f, type: 3}
+  - {fileID: 1306431151966221496, guid: 4ecac695644733d48b4386750923100c, type: 3}
+  - {fileID: 2699228496735189041, guid: 40271b7d33d700f47bfc00c88c7a2b63, type: 3}
+  dropChance: 0.1

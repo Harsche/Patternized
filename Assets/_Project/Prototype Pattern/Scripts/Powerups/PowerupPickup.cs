@@ -35,7 +35,7 @@ namespace PrototypePattern.Player.Powerups
                     if (player.TryGetComponent<PlayerMovement>(out var movement))
                     {
                         movement.StartSpeedBoost(speedMultiplier, duration);
-                        messageUI?.ShowMessage($"Speed Boost activated! ({speedMultiplier}x)", messageTimer);
+                        messageUI?.ShowMessage($"Speed Boost activated!", messageTimer);
                     }
                     break;
 

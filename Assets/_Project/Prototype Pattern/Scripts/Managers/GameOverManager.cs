@@ -5,7 +5,7 @@ using PrototypePattern.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameOverManager : MonoBehaviour
 {
     [SerializeField] private GameObject _gameOverPanel;
     [SerializeField] private GameObject _aim;

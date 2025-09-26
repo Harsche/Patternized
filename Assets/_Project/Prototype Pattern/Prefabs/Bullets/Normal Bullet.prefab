@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletDamage: 10
-  _speed: 20
+  _speed: 30
   _cooldown: 0.5
   _lifetime: 5
   _magazineCapacity: 6

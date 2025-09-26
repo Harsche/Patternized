@@ -11,24 +11,28 @@ namespace PrototypePattern.Horde
     [RequireComponent(typeof(HordeMessageUI))]
     public class HordeManager : MonoBehaviour
     {
+        public static HordeManager Instance { get; private set; }
+
         [Header("Tilemap Bounds")]
         [SerializeField] private Tilemap _tilemap;
 
         [Header("Enemy Visuals")]
         [SerializeField] private Sprite[] _enemySprites;
-        public static HordeManager Instance { get; private set; }
-
         [SerializeField] private GameObject _enemyPrefab;
         [SerializeField] private MonsterStatsSO _initialStats;
-        [SerializeField] private float _hordeTimer = 25f;
         [SerializeField] private Transform _hordeParent;
+
+        [Header("Horde Settings")]
+        [SerializeField] private float _hordeTimer = 25f;
+
+        [Header("Player Reference")]
+        [SerializeField] private PlayerController _player;
 
         [Header("UI")]
         [SerializeField] private TMP_Text _waveCounterText;
 
+        [Header("Prototype & State")]
         private EnemyController _prototype;
-        [SerializeField] private PlayerController _player;
-
         private int _currentWave = 0;
         private HordeMessageUI _hordeMessageUI;
         private int _enemiesSpawned;
@@ -43,12 +47,12 @@ namespace PrototypePattern.Horde
                 return;
             }
             Instance = this;
+
+            _hordeMessageUI = GetComponent<HordeMessageUI>();
         }
 
         private void Start()
         {
-            _hordeMessageUI = GetComponent<HordeMessageUI>();
-
             _prototype = Instantiate(_enemyPrefab).GetComponent<EnemyController>();
             _prototype.gameObject.SetActive(false);
             _prototype.InitializeFromStats(_initialStats, _player);
@@ -78,7 +82,7 @@ namespace PrototypePattern.Horde
         private IEnumerator StartWaveCoroutine()
         {
             _enemiesRemainingInWave = 0;
-        _waveCounterText.text = "00/00";
+            _waveCounterText.text = "00/00";
 
             _currentWave++;
             _hordeMessageUI.ShowMessage($"WAVE {_currentWave}", 3f);
@@ -100,6 +104,7 @@ namespace PrototypePattern.Horde
 
                 Vector3 spawnPosition = GetRandomSpawnPosition();
                 EnemyController enemy = _prototype.Clone(spawnPosition);
+                enemy.InitializeFromStats(_initialStats, _player);
                 enemy.gameObject.SetActive(true);
                 enemy.transform.SetParent(_hordeParent);
                 AssignRandomSprite(enemy);
@@ -143,15 +148,15 @@ namespace PrototypePattern.Horde
             {
                 case EnemyController.StatType.Health:
                     modifier = Random.Range(1f, 5f);
-                    message = $"WAVE {_currentWave}\nMonsters gain +{modifier:F1} Health!";
+                    message = $"WAVE {_currentWave}\nMonsters gain\n+{modifier:F1} Health!";
                     break;
                 case EnemyController.StatType.Speed:
                     modifier = Random.Range(0.5f, 2f);
-                    message = $"WAVE {_currentWave}\nMonsters gain +{modifier:F1} Speed!";
+                    message = $"WAVE {_currentWave}\nMonsters gain\n+{modifier:F1} Speed!";
                     break;
                 case EnemyController.StatType.Damage:
                     modifier = Random.Range(1f, 3f);
-                    message = $"WAVE {_currentWave}\nMonsters gain +{modifier:F1} Damage!";
+                    message = $"WAVE {_currentWave}\nMonsters gain\n+{modifier:F1} Damage!";
                     break;
             }
 

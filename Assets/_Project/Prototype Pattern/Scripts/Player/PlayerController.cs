@@ -12,7 +12,6 @@ namespace PrototypePattern.Player
     public class PlayerController : MonoBehaviour, IDamageable
     {
         private Color? _originalColor = null;
-        private int _twinkleId = 0;
         [Header("Health Settings")]
         [SerializeField] private float _health;
         [SerializeField] private float _maxHealth = 100f;
@@ -28,14 +27,12 @@ namespace PrototypePattern.Player
 
         [Header("Components")]
         [SerializeField] private TilemapCollider2D _limitsTilemap;
-        private Collider2D _physicsCollider;
         private Rigidbody2D _rigidBody2D;
-        private InputHandler _inputHandler;
 
         public event Action<float> OnHealthChanged;
 
         [SerializeField] private GameObject _shield;
-        [SerializeField] private GameManager _gameManager;
+        [SerializeField] private GameOverManager _gameOverManager;
 
         public float Health
         {
@@ -84,9 +81,7 @@ namespace PrototypePattern.Player
 
         private void Awake()
         {
-            _physicsCollider = GetComponent<Collider2D>();
             _rigidBody2D = GetComponent<Rigidbody2D>();
-            _inputHandler = GetComponent<InputHandler>();
             _canMove = true;
         }
         public void OnHit(int damage, Vector2 knockback)
@@ -106,7 +101,7 @@ namespace PrototypePattern.Player
 
         public void OnDeath()
         {
-            _gameManager.ShowGameOver();
+            _gameOverManager.ShowGameOver();
             Debug.Log("Died!");
         }
 

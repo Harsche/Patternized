@@ -7,7 +7,7 @@ namespace PrototypePattern.Player.Gun.Bullets
         protected override void Awake()
         {
             base.Awake();
-            _magazineCapacity = 200;
+            _magazineCapacity = 50;
         }
 
         protected override void Move(Vector3 direction, Transform target = null)

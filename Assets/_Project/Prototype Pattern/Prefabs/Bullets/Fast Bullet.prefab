@@ -100,10 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletDamage: 5
-  _speed: 40
+  _speed: 50
   _cooldown: 0.05
   _lifetime: 1
-  _magazineCapacity: 200
+  _magazineCapacity: 50
 --- !u!58 &5924540870320628611
 CircleCollider2D:
   m_ObjectHideFlags: 0

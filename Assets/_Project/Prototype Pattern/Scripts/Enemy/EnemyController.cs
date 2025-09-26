@@ -5,10 +5,12 @@ using PrototypePattern.Player;
 using PrototypePattern.Enemy;
 using UnityEngine;
 using PrototypePattern.Horde;
+using PrototypePattern.Powerups;
 
 namespace PrototypePattern.Enemy
 {
     [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(PowerupDropper))]
     public class EnemyController : MonoBehaviour, IDamageable, IPrototype<EnemyController>
     {
         public delegate void EnemyDeathHandler();
@@ -21,7 +23,9 @@ namespace PrototypePattern.Enemy
 
         [SerializeField] private GameObject _enemyDestructionFX;
         private PlayerController _player;
-
+        private PowerupDropper _powerupDropper;
+        public event EnemyDeathHandler OnDeathEvent;
+        public enum StatType { Health, Speed, Damage }
         public bool Targetable { get; }
         public bool Invincible { get; set; }
         public float Health
@@ -32,15 +36,16 @@ namespace PrototypePattern.Enemy
                 _health = value;
                 if (_health <= 0)
                 {
+                    _powerupDropper.TryDropPowerup();
                     OnDeath();
                 }
             }
         }
-        public event EnemyDeathHandler OnDeathEvent;
-        public enum StatType { Health, Speed, Damage }
+
         private void Awake()
         {
             InitializeFromStats(_baseStats);
+            _powerupDropper = GetComponent<PowerupDropper>();
         }
         private void Update()
         {
@@ -79,16 +84,13 @@ namespace PrototypePattern.Enemy
         }
         private void EnemyChasing()
         {
-            if (_player != null)
+            Vector3 playerPosition = _player.transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
+            Vector3 direction = playerPosition - transform.position;
+            if (direction.sqrMagnitude > 0.0001f)
             {
-                Vector3 playerPosition = _player.transform.position;
-                transform.position = Vector3.MoveTowards(transform.position, playerPosition, _speed * Time.deltaTime);
-                Vector3 direction = playerPosition - transform.position;
-                if (direction.sqrMagnitude > 0.0001f)
-                {
-                    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
-                    transform.rotation = Quaternion.Euler(0f, 0f, angle);
-                }
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
             }
         }
         public void OnHit(int damage, Vector2 knockback) { }

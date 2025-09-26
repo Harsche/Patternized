@@ -24,7 +24,6 @@ namespace PrototypePattern.Player.Gun
         [SerializeField] private BulletBase _fastBullet;
         private BulletBase _currentBullet;
 
-
         [Header("Muzzles")]
         [SerializeField] private Transform _singleShotOrigin;
         [SerializeField] private Transform _dualShotContainer;
