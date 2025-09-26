@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a1999e84a4dfde4b9573c40ba5e0b82, type: 3}
-  m_Name: Monster Initial Stats
+  m_Script: {fileID: 11500000, guid: 0ac3a0bc859277e46961abd170305290, type: 3}
+  m_Name: Third Wave
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 10
-  <Speed>k__BackingField: 10
-  <Damage>k__BackingField: 1
-  <KnockbackForce>k__BackingField: 100
+  _enemyCount: 20
+  _spawnInterval: 1

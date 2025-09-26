@@ -14,7 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <PatternName>k__BackingField: Prototype Pattern
   <PatternThumbnail>k__BackingField: {fileID: 21300000, guid: a071c7ab02ec88d4c998ef20995dc22e, type: 3}
-  <PatternDescription>k__BackingField: 
-  <HowToPlay>k__BackingField: 
-  <PatternUsage>k__BackingField: 
+  <PatternDescription>k__BackingField: "The Prototype Pattern is a design pattern
+    that lets you create new objects by copying existing ones, making it easy to
+    generate variations without complex inheritance or multiple prefabs.\r"
+  <HowToPlay>k__BackingField: "Survive waves of enemies and destroy asteroids in
+    a space arena. Each object asteroid, enemy, or powerup is spawned by cloning
+    a prototype, allowing for diverse gameplay experiences and randomization of stats,
+    visuals, and effects.\r"
+  <PatternUsage>k__BackingField: "Asteroids and enemies are instantiated from prototypes,
+    inheriting base stats and behaviors but allowing runtime modifications. Powerup
+    drops are managed by a shared component, demonstrating how the Prototype Pattern
+    streamlines object creation and gameplay variation in Unity.\r"
   <SceneName>k__BackingField: Prototype Pattern

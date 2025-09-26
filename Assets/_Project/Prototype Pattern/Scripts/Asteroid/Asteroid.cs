@@ -62,7 +62,7 @@ namespace PrototypePattern.Asteroids
         private void BounceAsteroid()
         {
             Vector2 bounce = Vector2.Reflect(_rigidBody2D.velocity, _bounceNormal);
-            _rigidBody2D.MovePosition(_rigidBody2D.position + _bounceNormal * 0.5f);
+            _rigidBody2D.MovePosition(_rigidBody2D.position + _bounceNormal * 10f);
             _rigidBody2D.velocity = bounce * 1.5f;
             _shouldBounce = false;
         }

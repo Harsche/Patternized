@@ -3,6 +3,7 @@ using PrototypePattern.Player;
 using PrototypePattern.Horde;
 using System.Collections;
 using PrototypePattern.Player.Gun;
+using PrototypePattern.Player.Powerups;
 
 namespace PrototypePattern.Player.Powerups
 {
@@ -14,6 +15,14 @@ namespace PrototypePattern.Player.Powerups
         public PowerupType powerupType = PowerupType.DualShot;
         public float duration = 6f;
         public float speedMultiplier = 1.5f;
+        [Header("UI")]
+        private Sprite powerupIcon;
+        private PowerupUIManager _powerupUIManager;
+
+        private void Awake()
+        {
+            powerupIcon = GetComponent<SpriteRenderer>().sprite;
+        }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -21,6 +30,8 @@ namespace PrototypePattern.Player.Powerups
 
             HordeMessageUI messageUI = FindObjectOfType<HordeMessageUI>();
             float messageTimer = 1f;
+
+            PowerupUIManager.Instance.ShowPowerupIcon(powerupIcon);
 
             switch (powerupType)
             {

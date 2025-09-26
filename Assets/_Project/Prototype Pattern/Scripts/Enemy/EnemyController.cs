@@ -14,7 +14,7 @@ namespace PrototypePattern.Enemy
     public class EnemyController : MonoBehaviour, IDamageable, IPrototype<EnemyController>
     {
         public delegate void EnemyDeathHandler();
-        [SerializeField] private MonsterStatsSO _baseStats;
+        private MonsterStatsSO _baseStats;
 
         private float _health;
         private int _hitDamage;
@@ -28,6 +28,7 @@ namespace PrototypePattern.Enemy
         public enum StatType { Health, Speed, Damage }
         public bool Targetable { get; }
         public bool Invincible { get; set; }
+
         public float Health
         {
             get => _health;

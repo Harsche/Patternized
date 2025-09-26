@@ -41,14 +41,6 @@ namespace PrototypePattern.Player.Gun
         private bool _isReloading;
         private float _nextShootTime;
         private bool _dualUntilEmpty = false;
-        private ShotType activeShot
-        {
-            get
-            {
-                if (_dualUntilEmpty) return ShotType.Dual;
-                return _defaultShotType;
-            }
-        }
 
         private void Awake()
         {
@@ -130,7 +122,10 @@ namespace PrototypePattern.Player.Gun
 
             _currentAmmo--;
             if (_currentAmmo <= 0 && _dualUntilEmpty)
+            {
                 _dualUntilEmpty = false;
+                PowerupUIManager.Instance.HidePowerupIcon();
+            }
         }
 
         private void FireDual(Vector3 spawnPosition, Vector3 shootDirection)
@@ -157,7 +152,11 @@ namespace PrototypePattern.Player.Gun
 
             _currentAmmo -= 2;
             if (_currentAmmo <= 0 && _dualUntilEmpty)
+            {
                 _dualUntilEmpty = false;
+                if (PowerupUIManager.Instance != null)
+                    PowerupUIManager.Instance.HidePowerupIcon();
+            }
         }
 
 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using PrototypePattern.Input;
+using PrototypePattern.Player.Powerups;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -32,7 +33,8 @@ namespace PrototypePattern.Player
         public event Action<float> OnHealthChanged;
 
         [SerializeField] private GameObject _shield;
-        [SerializeField] private GameOverManager _gameOverManager;
+        [SerializeField] private EndGameManager _endGameManager;
+        // ...campo removido...
 
         public float Health
         {
@@ -53,7 +55,6 @@ namespace PrototypePattern.Player
         public float NormalizedHealth => Mathf.Approximately(_maxHealth, 0f) ? 0f : Mathf.Clamp01(_health / _maxHealth);
         public float MaxHealth => _maxHealth;
 
-
         public bool Targetable
         {
             get => _targetable;
@@ -69,7 +70,9 @@ namespace PrototypePattern.Player
             set
             {
                 _invincible = value;
+
                 _shield.SetActive(_invincible);
+                PowerupUIManager.Instance.HidePowerupIcon();
             }
         }
 
@@ -101,7 +104,7 @@ namespace PrototypePattern.Player
 
         public void OnDeath()
         {
-            _gameOverManager.ShowGameOver();
+            _endGameManager.ShowDefeat();
             Debug.Log("Died!");
         }
 
