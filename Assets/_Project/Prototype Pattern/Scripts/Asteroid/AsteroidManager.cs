@@ -7,6 +7,7 @@ namespace PrototypePattern.Asteroids
     public class AsteroidManager : MonoBehaviour
     {
         [SerializeField] private Tilemap _spaceTilemap;
+        [SerializeField] private TilemapCollider2D _limitTilemap;
         [SerializeField] private GameObject[] _asteroidPrefabs;
         [SerializeField] private Transform _asteroidParent;
         public int asteroidCount = 20;
@@ -29,7 +30,7 @@ namespace PrototypePattern.Asteroids
             SpawnAsteroids();
         }
 
-        void SpawnAsteroids()
+        private void SpawnAsteroids()
         {
             BoundsInt bounds = _spaceTilemap.cellBounds;
 
@@ -52,6 +53,8 @@ namespace PrototypePattern.Asteroids
                     int protoIdx = Random.Range(0, _prototypes.Length);
                     Asteroid asteroid = _prototypes[protoIdx].Clone(spawnPos);
                     asteroid.transform.SetParent(_asteroidParent);
+
+                    asteroid.SetLimitTilemap(_limitTilemap);
 
                     if (dropChanceOverride >= 0f)
                     {

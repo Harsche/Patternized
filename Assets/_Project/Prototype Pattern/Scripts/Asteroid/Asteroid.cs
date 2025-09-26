@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace PrototypePattern.Asteroids
 {
@@ -6,6 +7,14 @@ namespace PrototypePattern.Asteroids
     [RequireComponent(typeof(Rigidbody2D))]
     public class Asteroid : MonoBehaviour, IPrototype<Asteroid>
     {
+        [SerializeField] private AsteroidData _asteroidData;
+        [SerializeField] private GameObject[] powerupPrefabs;
+        private TilemapCollider2D _limitsTilemap;
+        private Rigidbody2D rigidBody2D;
+        private float? forcedDropChance = null;
+        private bool _shouldBounce = false;
+        private Vector2 _bounceNormal;
+
         public Asteroid Clone()
         {
             return Clone(transform.position);
@@ -17,10 +26,7 @@ namespace PrototypePattern.Asteroids
             clone.gameObject.SetActive(true);
             return clone;
         }
-        [SerializeField] private AsteroidData _asteroidData;
-        [SerializeField] private GameObject[] powerupPrefabs;
-        private Rigidbody2D rigidBody2D;
-        private float? forcedDropChance = null;
+
         void Start()
         {
             rigidBody2D = GetComponent<Rigidbody2D>();
@@ -35,6 +41,16 @@ namespace PrototypePattern.Asteroids
 
             rigidBody2D.angularVelocity = Random.Range(-_asteroidData.RotationSpeed, _asteroidData.RotationSpeed);
         }
+        private void Update()
+        {
+            if (_shouldBounce)
+            {
+                Vector2 bounce = Vector2.Reflect(rigidBody2D.velocity, _bounceNormal);
+                rigidBody2D.MovePosition(rigidBody2D.position + _bounceNormal * 0.5f);
+                rigidBody2D.velocity = bounce * 1.5f;
+                _shouldBounce = false;
+            }
+        }
         public void OnBulletHit()
         {
             OnDestroyAsteroid();
@@ -42,6 +58,7 @@ namespace PrototypePattern.Asteroids
             Destroy(asteroidFX, 2f);
             Destroy(gameObject);
         }
+
         private void OnDestroyAsteroid()
         {
             float chance = forcedDropChance ?? _asteroidData.DropBaseChance;
@@ -52,9 +69,20 @@ namespace PrototypePattern.Asteroids
                 Instantiate(powerupPrefabs[index], transform.position, Quaternion.identity);
             }
         }
+
         public void OverrideDropChance(float chance)
         {
             forcedDropChance = Mathf.Clamp01(chance);
+        }
+        public void SetLimitTilemap(TilemapCollider2D tilemapCollider2D) => _limitsTilemap = tilemapCollider2D;
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider == _limitsTilemap)
+            {
+                _shouldBounce = true;
+                _bounceNormal = collision.contacts[0].normal;
+            }
         }
     }
 }
