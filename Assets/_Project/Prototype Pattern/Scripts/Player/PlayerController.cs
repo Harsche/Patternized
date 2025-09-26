@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using PrototypePattern.Input;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace PrototypePattern.Player
 {
@@ -11,6 +12,7 @@ namespace PrototypePattern.Player
     public class PlayerController : MonoBehaviour, IDamageable
     {
         private Color? _originalColor = null;
+        private int _twinkleId = 0;
         [Header("Health Settings")]
         [SerializeField] private float _health;
         [SerializeField] private float _maxHealth = 100f;
@@ -25,12 +27,12 @@ namespace PrototypePattern.Player
         [SerializeField] private bool _canMove = true;
 
         [Header("Components")]
+        [SerializeField] private TilemapCollider2D _limitsTilemap;
         private Collider2D _physicsCollider;
         private Rigidbody2D _rigidBody2D;
         private InputHandler _inputHandler;
 
         public event Action<float> OnHealthChanged;
-        private Coroutine _twinkleCoroutine;
 
         [SerializeField] private GameObject _shield;
         [SerializeField] private GameManager _gameManager;
@@ -108,16 +110,17 @@ namespace PrototypePattern.Player
             Debug.Log("Died!");
         }
 
+        private bool _isTwinkling = false;
+
         private IEnumerator ApplyKnockback(Vector2 knockback, float duration)
         {
             Invincible = true;
             CanMove = false;
             _rigidBody2D.AddForce(knockback, ForceMode2D.Impulse);
-            if (_twinkleCoroutine != null)
-            {
-                StopCoroutine(_twinkleCoroutine);
-            }
-            _twinkleCoroutine = StartCoroutine(HitTwinkle(1f));
+
+            _isTwinkling = true;
+            StartCoroutine(HitTwinkle(1f));
+
             yield return new WaitForSeconds(duration);
             Invincible = false;
             CanMove = true;
@@ -126,19 +129,38 @@ namespace PrototypePattern.Player
         private IEnumerator HitTwinkle(float timer)
         {
             SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-            _originalColor = spriteRenderer.color;
+            if (_originalColor == null) _originalColor = spriteRenderer.color;
+
             float elapsedTime = 0f;
 
-            while (elapsedTime <= timer)
+            while (elapsedTime <= timer && _isTwinkling)
             {
-                spriteRenderer.color = Color.Lerp(_originalColor.Value, Color.red, Mathf.PingPong(Time.time * 5f, 1f));
+                spriteRenderer.color = Color.Lerp(
+                    _originalColor.Value,
+                    Color.red,
+                    Mathf.PingPong(Time.time * 5f, 1f)
+                );
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
 
-            spriteRenderer.color = _originalColor.Value;
-            _twinkleCoroutine = null;
+            if (_isTwinkling)
+            {
+                spriteRenderer.color = _originalColor.Value;
+            }
         }
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.collider == _limitsTilemap)
+            {
+                Vector2 normal = collision.contacts[0].normal;
 
+                Vector2 bounce = Vector2.Reflect(_rigidBody2D.velocity, normal);
+
+                _rigidBody2D.MovePosition(_rigidBody2D.position + normal * 0.1f);
+
+                _rigidBody2D.velocity = bounce * 1.5f;
+            }
+        }
     }
 }
