@@ -960,7 +960,6 @@ MonoBehaviour:
   - {fileID: 2969546730348731699, guid: f11344270e4ec0a4a8790803e0035baa, type: 3}
   _asteroidParent: {fileID: 1226507772}
   asteroidCount: 50
-  dropChanceOverride: -1
 --- !u!1 &357700632
 GameObject:
   m_ObjectHideFlags: 0
@@ -83985,10 +83984,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5eb68471fc405604d85c649bf2410436, type: 3}
   _enemyPrefab: {fileID: 3932890287639057935, guid: 1c48bf978c3f95e4baa05e78aefa48e4, type: 3}
   _initialStats: {fileID: 11400000, guid: ca8ed1172d4505f47b86f0aceb96707a, type: 2}
-  _hordeTimer: 10
   _hordeParent: {fileID: 1952285856}
-  _waveCounterText: {fileID: 2114410449}
+  _hordeTimer: 10
   _player: {fileID: 1349966705}
+  _waveCounterText: {fileID: 2114410449}
 --- !u!114 &500442771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84515,7 +84514,7 @@ GameObject:
   - component: {fileID: 850951721}
   - component: {fileID: 850951722}
   m_Layer: 0
-  m_Name: Game Manager
+  m_Name: Game Over Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -321320,7 +321319,7 @@ MonoBehaviour:
   _canMove: 1
   _limitsTilemap: {fileID: 1175711929}
   _shield: {fileID: 1114614034}
-  _gameManager: {fileID: 850951722}
+  _gameOverManager: {fileID: 0}
 --- !u!212 &1349966706
 SpriteRenderer:
   m_ObjectHideFlags: 0

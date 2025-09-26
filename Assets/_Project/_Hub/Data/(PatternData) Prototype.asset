@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b0e0d074c34aa18f91fd073c8c8e00, type: 3}
+  m_Name: (PatternData) Prototype
+  m_EditorClassIdentifier: 
+  <PatternName>k__BackingField: Prototype Pattern
+  <PatternThumbnail>k__BackingField: {fileID: 21300000, guid: a071c7ab02ec88d4c998ef20995dc22e, type: 3}
+  <PatternDescription>k__BackingField: 
+  <HowToPlay>k__BackingField: 
+  <PatternUsage>k__BackingField: 
+  <SceneName>k__BackingField: Prototype Pattern
