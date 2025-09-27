@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: (PatternData) Prototype
   m_EditorClassIdentifier: 
   <PatternName>k__BackingField: Prototype Pattern
-  <PatternThumbnail>k__BackingField: {fileID: 21300000, guid: a071c7ab02ec88d4c998ef20995dc22e, type: 3}
+  <PatternThumbnail>k__BackingField: {fileID: 21300000, guid: 31cab6a296f54a74fa9b2ac33e8f14fe, type: 3}
   <PatternDescription>k__BackingField: "The Prototype Pattern is a design pattern
     that lets you create new objects by copying existing ones, making it easy to
     generate variations without complex inheritance or multiple prefabs.\r"
