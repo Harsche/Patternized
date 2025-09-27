@@ -1,9 +1,7 @@
 using UnityEngine;
-using PrototypePattern.Player;
 using PrototypePattern.Horde;
 using System.Collections;
 using PrototypePattern.Player.Gun;
-using PrototypePattern.Player.Powerups;
 
 namespace PrototypePattern.Player.Powerups
 {
@@ -22,6 +20,7 @@ namespace PrototypePattern.Player.Powerups
         private void Awake()
         {
             powerupIcon = GetComponent<SpriteRenderer>().sprite;
+            Destroy(gameObject, 5f);
         }
 
         private void OnTriggerEnter2D(Collider2D other)

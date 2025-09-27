@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a1999e84a4dfde4b9573c40ba5e0b82, type: 3}
   m_Name: Monster Initial Stats
   m_EditorClassIdentifier: 
-  <Health>k__BackingField: 10
-  <Speed>k__BackingField: 10
-  <Damage>k__BackingField: 1
-  <KnockbackForce>k__BackingField: 100
+  _health: 10
+  _speed: 12
+  _damage: 1
+  _knockbackForce: 100

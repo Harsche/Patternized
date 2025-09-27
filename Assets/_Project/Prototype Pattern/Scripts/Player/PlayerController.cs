@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using PrototypePattern.Input;
+using PrototypePattern.Managers;
 using PrototypePattern.Player.Powerups;
 using UnityEngine;
 using UnityEngine.Tilemaps;

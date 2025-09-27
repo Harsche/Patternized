@@ -2,6 +2,7 @@ using System.Collections;
 using PrototypePattern.Input;
 using PrototypePattern.Player.Gun.Bullets;
 using PrototypePattern.Player.Powerups;
+using PrototypePattern.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -86,6 +87,7 @@ namespace PrototypePattern.Player.Gun
             if (_currentAmmo <= 0) return;
             if (Time.time < _nextShootTime) return;
 
+            BulletBase previousBullet = _currentBullet;
             if (_dualUntilEmpty || _defaultShotType == ShotType.Dual)
             {
                 _currentBullet = _fastBullet;
@@ -95,9 +97,19 @@ namespace PrototypePattern.Player.Gun
                 _currentBullet = _normalBullet;
             }
 
-            _currentMagazineSize = _currentBullet.MagazineCapacity;
-            if (_currentAmmo > _currentMagazineSize)
-                _currentAmmo = _currentMagazineSize;
+            if (previousBullet != _currentBullet)
+            {
+                _currentMagazineSize = _currentBullet.MagazineCapacity;
+                if (_currentAmmo > _currentMagazineSize)
+                    _currentAmmo = _currentMagazineSize;
+                _ammoDisplay = new AmmoDisplay(_currentMagazineSize, _ammoText, _currentAmmo);
+            }
+            else
+            {
+                _currentMagazineSize = _currentBullet.MagazineCapacity;
+                if (_currentAmmo > _currentMagazineSize)
+                    _currentAmmo = _currentMagazineSize;
+            }
 
             Vector3 spawnPosition = transform.position;
             Vector3 shootDirection = GetMouseDirection();
@@ -121,6 +133,7 @@ namespace PrototypePattern.Player.Gun
             _currentBullet.Shoot(spawnPosition, shootDirection, _bulletParent);
 
             _currentAmmo--;
+            _ammoDisplay.UpdateAmmo(_currentAmmo);
             if (_currentAmmo <= 0 && _dualUntilEmpty)
             {
                 _dualUntilEmpty = false;
@@ -151,6 +164,7 @@ namespace PrototypePattern.Player.Gun
             }
 
             _currentAmmo -= 2;
+            _ammoDisplay.UpdateAmmo(_currentAmmo);
             if (_currentAmmo <= 0 && _dualUntilEmpty)
             {
                 _dualUntilEmpty = false;
@@ -188,7 +202,10 @@ namespace PrototypePattern.Player.Gun
             _isReloading = true;
             yield return new WaitForSeconds(_reloadTime);
 
+            _currentBullet = _normalBullet;
+            _currentMagazineSize = _currentBullet.MagazineCapacity;
             _currentAmmo = _currentMagazineSize;
+            _ammoDisplay = new AmmoDisplay(_currentMagazineSize, _ammoText, _currentAmmo);
             _isReloading = false;
 
             _ammoDisplay.UpdateAmmo(_currentAmmo);

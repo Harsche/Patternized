@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ac3a0bc859277e46961abd170305290, type: 3}
   m_Name: Third Wave
   m_EditorClassIdentifier: 
-  _enemyCount: 20
+  _enemyCount: 1
   _spawnInterval: 1
