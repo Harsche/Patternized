@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46b0e0d074c34aa18f91fd073c8c8e00, type: 3}
+  m_Name: (PatternData) Prototype
+  m_EditorClassIdentifier: 
+  <PatternName>k__BackingField: Prototype Pattern
+  <PatternThumbnail>k__BackingField: {fileID: 21300000, guid: 31cab6a296f54a74fa9b2ac33e8f14fe, type: 3}
+  <PatternDescription>k__BackingField: "The Prototype Pattern is a design pattern
+    that lets you create new objects by copying existing ones, making it easy to
+    generate variations without complex inheritance or multiple prefabs.\r"
+  <HowToPlay>k__BackingField: "Survive waves of enemies and destroy asteroids in
+    a space arena. Each object asteroid, enemy, or powerup is spawned by cloning
+    a prototype, allowing for diverse gameplay experiences and randomization of stats,
+    visuals, and effects.\r"
+  <PatternUsage>k__BackingField: "Asteroids and enemies are instantiated from prototypes,
+    inheriting base stats and behaviors but allowing runtime modifications. Powerup
+    drops are managed by a shared component, demonstrating how the Prototype Pattern
+    streamlines object creation and gameplay variation in Unity.\r"
+  <SceneName>k__BackingField: Prototype Pattern

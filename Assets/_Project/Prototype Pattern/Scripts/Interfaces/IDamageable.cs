@@ -21,7 +21,7 @@ namespace PrototypePattern
         /// <summary>
         /// Gets or sets whether this object is invincible and immune to damage.
         /// </summary>
-        public bool Invincible { get; }
+        public bool Invincible { get; set; }
 
         /// <summary>
         /// Called when the object is hit with damage and knockback.
